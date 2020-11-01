@@ -1,17 +1,17 @@
-self: super: {
-  neovim-unwrapped = super.neovim-unwrapped.overrideDerivation (oldAttrs: rec{
+final: prev: {
+  neovim-unwrapped = prev.neovim-unwrapped.overrideDerivation (oldAttrs: rec{
     pname = "neovim-unwrapped";
     version = "0.5.0";
     name = "${pname}-${version}";
-    src = super.pkgs.fetchFromGitHub {
+    src = prev.pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "98024853f4755f51e82526b45484bae0ec6042ba";
-      sha256 = "MOCvIwzbQGVvzjaBzSuWoeSb7B/cIOGPcWUymu4UHTY=";
+      rev = "90f3a8ba291fb0583ab6b0bd33129fdd45df1dab";
+      sha256 = "n59ZEeIpmbumhwLV5ET5dWGeNZ/ZDnsnSCjeZyAoo3Q=";
     };
   });
 
-  neovim = super.neovim.override {
+  neovim = prev.neovim.override {
     extraPython3Packages = (ps: with ps; [
       pynvim
       black
