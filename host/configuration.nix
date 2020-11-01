@@ -38,13 +38,13 @@ with pkgs;
     tmpOnTmpfs = true;
     kernelPackages = pkgs.linuxPackages_5_8;
     loader = {
-      systemd-boot.enable = true;
+      systemd-boot.enable = false;
       efi.canTouchEfiVariables = true;
       grub = {
-        enable = false;
-        #  devices = [ "nodev" ];
-        #  efiSupport = true;
-        #  useOSProber = true;
+        enable = true;
+         devices = [ "nodev" ];
+         efiSupport = true;
+         useOSProber = true;
       };
     };
   };

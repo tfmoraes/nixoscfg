@@ -8,7 +8,8 @@
 
   outputs = { self, home-manager, nixpkgs, ... }: rec{
     nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
+
+      watchmen = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./host/configuration.nix
@@ -21,6 +22,7 @@
           ./home/overlays
         ];
       };
+
     };
   };
 }
