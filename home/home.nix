@@ -25,7 +25,6 @@
     # neovim and language server
     clang-analyzer
     cmake-language-server
-    ctags
     gopls
     ltrace
     neovim
@@ -36,6 +35,7 @@
     rust-analyzer
     strace
     sumneko
+    universal-ctags
     vimlsp
     vscode
 
