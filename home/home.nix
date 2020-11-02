@@ -10,38 +10,42 @@
   home.homeDirectory = "/home/thiago";
 
   home.packages = with pkgs; [
-    htop
-    fortune
-    # meshlab
-    # paraview
     any-nix-shell
+    cachix
+    fortune
+    htop
     ncdu
-    nix-index
     niv
+    nix-index
 
     # gnome3
     gnome3.gnome-boxes
     gnome3.gnome-tweaks
 
     # neovim and language server
-    neovim
-    neovim-qt
     clang-analyzer
     cmake-language-server
     ctags
     gopls
+    ltrace
+    neovim
+    neovim-qt
     ninja
+    nixpkgs-fmt
     python-language-server
     rust-analyzer
+    strace
     sumneko
     vimlsp
-    nixpkgs-fmt
+    vscode
 
     chromium
     gimp
     inkscape
     keepassxc
     libreoffice-fresh
+    meshlab
+    paraview
     thunderbird-bin
     vlc
     zettlr
@@ -59,11 +63,13 @@
     patchelf
     podman
     starship
+    steam-run
     texlive.combined.scheme-full
     toolbox
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
+
     (pkgs.python3.withPackages (ps:
       with ps; [
         beautifulsoup4
