@@ -31,7 +31,6 @@ with pkgs;
       keep-derivations = true
       preallocate-contents = false
       experimental-features = nix-command flakes
-      restrict-eval = false
     '';
   };
 
