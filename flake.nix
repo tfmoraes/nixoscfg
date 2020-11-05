@@ -26,7 +26,7 @@
             home-manager.useUserPackages = true;
             home-manager.users.thiago = import ./home/home.nix;
           }
-          ./home/overlays
+          ./overlays
         ];
       };
 
