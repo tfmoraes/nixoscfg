@@ -6,9 +6,13 @@ final: prev: {
     src = prev.pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "90f3a8ba291fb0583ab6b0bd33129fdd45df1dab";
-      sha256 = "n59ZEeIpmbumhwLV5ET5dWGeNZ/ZDnsnSCjeZyAoo3Q=";
+      rev = "d17e508796be60eefe4a597df62de1fd9e7e1725";
+      sha256 = "sha256-sZhGd/sUo2r223pLXzS1VOKh9SAZG4fkzqGUC3vtG2k=";
     };
+
+    buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.tree-sitter ];
+
+    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ prev.pkgs.tree-sitter ];
   });
 
   neovim = prev.neovim.override {
@@ -22,4 +26,8 @@ final: prev: {
       pynvim
     ]);
   };
+
+  tree-sitter = prev.tree-sitter.overrideAttrs (oldAttrs: {
+    postInstall = "PREFIX=$out make install";
+  });
 }
