@@ -23,20 +23,25 @@
     gnome3.gnome-tweaks
 
     # neovim and language server
+    black
     clang-analyzer
     cmake-language-server
     gopls
     ltrace
+    luajitPackages.lua-lsp
     neovim
     neovim-qt
+    neovim-remote
     ninja
     nixpkgs-fmt
+    nodePackages.pyright
     python-language-server
+    rnix-lsp
     rust-analyzer
     strace
-    sumneko
+    # sumneko
     universal-ctags
-    vimlsp
+    # vimlsp
     vscode
 
     chromium
