@@ -1,0 +1,34 @@
+diff --git a/src/cmd/create.go b/src/cmd/create.go
+index 5093889..831f01c 100644
+--- a/cmd/create.go
++++ b/cmd/create.go
+@@ -264,18 +264,21 @@ func createContainer(container, image, release string, showCommandToEnter bool)
+ 		}
+ 	}
+ 
+-	logrus.Debug("Checking if /mnt is a symbolic link to /var/mnt")
+ 
+ 	var mntLink []string
+ 	var mntMount []string
+ 
+-	mntPath, _ := filepath.EvalSymlinks("/mnt")
+-	if mntPath == "/var/mnt" {
+-		logrus.Debug("/mnt is a symbolic link to /var/mnt")
+-		mntLink = []string{"--mnt-link"}
+-	} else {
+-		mntMount = []string{"--volume", "/mnt:/mnt:rslave"}
+-	}
++    if utils.PathExists("/mnt") {
++        logrus.Debug("Checking if /mnt is a symbolic link to /var/mnt")
++
++        mntPath, _ := filepath.EvalSymlinks("/mnt")
++        if mntPath == "/var/mnt" {
++            logrus.Debug("/mnt is a symbolic link to /var/mnt")
++            mntLink = []string{"--mnt-link"}
++        } else {
++            mntMount = []string{"--volume", "/mnt:/mnt:rslave"}
++        }
++    }
+ 
+ 	var runMediaMount []string
+ 
