@@ -6,8 +6,8 @@ final: prev: {
     src = prev.pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "d17e508796be60eefe4a597df62de1fd9e7e1725";
-      sha256 = "sha256-sZhGd/sUo2r223pLXzS1VOKh9SAZG4fkzqGUC3vtG2k=";
+      rev = "a4fea2884dae63d218179035981d2edfa21fda91";
+      sha256 = "sha256-j3F7AfZgvoKGkxXN/gcFRNYtvVeEA5Y538iMcqA24qQ=";
     };
 
     buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.tree-sitter ];

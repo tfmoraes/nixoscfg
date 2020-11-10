@@ -37,7 +37,7 @@
     nodePackages.pyright
     python-language-server
     rnix-lsp
-    rust-analyzer
+    #rust-analyzer
     strace
     # sumneko
     universal-ctags
@@ -66,7 +66,6 @@
     imagemagick
     pandoc
     patchelf
-    podman
     starship
     steam-run
     texlive.combined.scheme-full

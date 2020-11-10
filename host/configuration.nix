@@ -61,6 +61,12 @@ with pkgs;
     lxd = {
       enable = true;
     };
+    podman = {
+      enable = true;
+      extraPackages = [
+        pkgs.crun
+      ];
+    };
   };
 
   # Select internationalisation properties.
