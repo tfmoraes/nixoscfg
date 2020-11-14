@@ -1,7 +1,9 @@
 { config, pkgs, ... }:
 
 with pkgs; {
+
   services = {
+
     xserver = {
       displayManager.gdm = {
         enable = true;
@@ -15,6 +17,7 @@ with pkgs; {
       chrome-gnome-shell.enable = true;
       tracker.enable = true;
       tracker-miners.enable = true;
+      experimental-features.realtime-scheduling = true;
     };
 
   };
@@ -23,6 +26,10 @@ with pkgs; {
     enable = true;
     platformTheme = "gnome";
     style = "adwaita";
+  };
+
+  programs = {
+    gnupg.agent.pinentryFlavor = "gnome3";
   };
 
   environment.gnome3.excludePackages = with pkgs.gnome3; [

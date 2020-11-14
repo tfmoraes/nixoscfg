@@ -6,13 +6,13 @@ final: prev: {
     src = prev.pkgs.fetchFromGitHub {
       owner = "neovim";
       repo = "neovim";
-      rev = "a4fea2884dae63d218179035981d2edfa21fda91";
-      sha256 = "sha256-j3F7AfZgvoKGkxXN/gcFRNYtvVeEA5Y538iMcqA24qQ=";
+      rev = "0798ad3a3a071db1b647df5aecd7698ed9aff7d9";
+      sha256 = "sha256-YyBZc5d8p4ddIZzR+Z4eTFtKiwB/cYMx9FTXLx0NrEY=";
     };
 
     buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.tree-sitter ];
 
-    nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ prev.pkgs.tree-sitter ];
+    # nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ prev.pkgs.tree-sitter ];
   });
 
   neovim = prev.neovim.override {

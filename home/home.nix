@@ -26,6 +26,7 @@
     black
     clang-analyzer
     cmake-language-server
+    glow
     gopls
     ltrace
     luajitPackages.lua-lsp
