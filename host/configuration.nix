@@ -86,7 +86,6 @@ with pkgs;
     systemPackages = with pkgs; [
       curl
       firefox-bin
-      fish
       git
       vim
       wget

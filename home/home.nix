@@ -36,6 +36,7 @@
     ninja
     nixpkgs-fmt
     nodePackages.pyright
+    nodePackages.vim-language-server
     python-language-server
     rnix-lsp
     rust-analyzer
