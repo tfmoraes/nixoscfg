@@ -34,7 +34,7 @@ in
     # ];
   # });
 
-  plaidml = python-super.callPackage ./plaidml { };
+  plaidml = python-self.callPackage ./plaidml { };
 
   # pypubsub = python-super.callPackage ./pubsub {
   # buildPythonPackage = python-super.buildPythonPackage;

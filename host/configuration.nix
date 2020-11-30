@@ -7,6 +7,7 @@ with pkgs;
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./nvidia.nix
+      ./sensors.nix
       ./network.nix
       ./gnome.nix
       ./fonts.nix
@@ -38,13 +39,13 @@ with pkgs;
     tmpOnTmpfs = true;
     kernelPackages = pkgs.linuxPackages_5_8;
     loader = {
-      systemd-boot.enable = false;
+      systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       grub = {
-        enable = true;
-         devices = [ "nodev" ];
-         efiSupport = true;
-         useOSProber = true;
+        enable = false;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;
       };
     };
   };
@@ -53,7 +54,7 @@ with pkgs;
   virtualisation = {
     docker = {
       enable = true;
-      #enableNvidia = true;
+      enableNvidia = true;
     };
     libvirtd = {
       enable = true;
@@ -119,6 +120,8 @@ with pkgs;
       hyperfine
       ripgrep
       tokei
+
+      docker-compose
 
       gcc
       clang
@@ -232,6 +235,14 @@ with pkgs;
     };
 
     fstrim = {
+      enable = true;
+    };
+
+    fwupd = {
+      enable = true;
+    };
+
+    acpid = {
       enable = true;
     };
   };
