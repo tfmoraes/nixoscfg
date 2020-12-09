@@ -25,7 +25,7 @@
     # neovim and language server
     black
     clang-analyzer
-    cmake-language-server
+    # cmake-language-server
     glow
     gopls
     ltrace
@@ -81,7 +81,7 @@
         beautifulsoup4
         click
         cython
-        gdcm
+        # gdcm
         imageio
         ipython
         Keras
@@ -89,7 +89,7 @@
         keras-preprocessing
         matplotlib
         networkx
-        nibabel
+        # nibabel
         numba
         numpy
         opencv4

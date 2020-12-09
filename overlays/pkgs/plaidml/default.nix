@@ -51,7 +51,7 @@ buildPythonPackage rec {
     cp -r plaidml-${version}.data/data/share -t $out/
 
     # Installing plaidml-keras and keras
-    ${python.pythonForBuild.interpreter} -m pip install --no-build-isolation --no-index --prefix=$out  --ignore-installed --no-dependencies --no-cache --build tmpbuild *.whl
+    ${python.pythonForBuild.interpreter} -m pip install --no-build-isolation --no-index --prefix=$out  --ignore-installed --no-dependencies --no-cache *.whl
   '';
 
   profile = ''

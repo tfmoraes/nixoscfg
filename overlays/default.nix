@@ -7,5 +7,6 @@
     (import ./vimlsp.nix)
     (import ./toolbox.nix)
     (import ./python.nix)
+    # (import ./cmake.nix)
   ];
 }
