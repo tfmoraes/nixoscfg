@@ -11,32 +11,58 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-  };
-
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: rec{
-      common = {
-        nix.nixPath = [
-          "nixpkgs=${nixpkgs}"
-        ];
-        nix.registry.nixpkgs.flake = nixpkgs;
-      };
-    nixosConfigurations = {
-      watchmen = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./host/configuration.nix
-          ./overlays
-          common
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.thiago = import ./home/home.nix;
-          }
-        ];
-        specialArgs = { inherit inputs; };
-      };
-
+    flake-utils = {
+      url = "github:numtide/flake-utils";
     };
+
   };
+
+  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, ... }:
+    flake-utils.lib.eachDefaultSystem (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+          scripts = import ./lib/scripts.nix { inherit pkgs; };
+        in
+        {
+          devShell = pkgs.mkShell {
+            name = "teste";
+            nativeBuildInputs = [
+              pkgs.git
+              scripts.update-flake
+              scripts.home-switch
+              scripts.update-system
+            ];
+          };
+        }
+      ) //
+    {
+      nixosConfigurations = {
+        watchmen = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./host/configuration.nix
+          ];
+          specialArgs = { inherit inputs; };
+        };
+      };
+
+      homeManagerConfigurations = {
+        thiago = home-manager.lib.homeManagerConfiguration {
+          configuration = { pkgs, lib, ... }: {
+            nixpkgs = {
+              config = {
+                allowUnfree = true;
+              };
+            };
+            imports = [
+              ./home/home.nix
+              ./overlays
+            ];
+          };
+          system = "x86_64-linux";
+          homeDirectory = "/home/thiago/";
+          username = "thiago";
+        };
+      };
+    };
 }

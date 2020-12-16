@@ -7,7 +7,7 @@
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "thiago";
-  home.homeDirectory = "/home/thiago";
+  # home.homeDirectory = "/home/thiago";
 
   home.packages = with pkgs; [
     any-nix-shell

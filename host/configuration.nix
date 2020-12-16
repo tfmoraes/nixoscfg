@@ -33,11 +33,16 @@ with pkgs;
       preallocate-contents = false
       experimental-features = nix-command flakes
     '';
+    nixPath = [
+      "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
+      "home-manager=/etc/${config.environment.etc.home-manager.target}"
+    ];
+    registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
   boot = {
     tmpOnTmpfs = true;
-    kernelPackages = pkgs.linuxPackages_5_8;
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
@@ -137,6 +142,11 @@ with pkgs;
         py.scipy
       ]))
     ];
+
+    etc = {
+      home-manager.source = "${inputs.home-manager}";
+      nixpkgs.source = "${inputs.nixpkgs}";
+    };
 
   };
 

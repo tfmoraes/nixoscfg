@@ -6,14 +6,20 @@ with pkgs;
 
 
 {
-  switchNixos = writeShellScriptBin "switch-nixos" ''
-    set -euo pipefail
-    sudo nixos-rebuild switch --flake . $@
+  update-flake = writeShellScriptBin "update-flake" ''
+  nix flake update --update-input nixpkgs
+  nix flake update --update-input home-manager
+  nix flake update --update-input flake-utils
   '';
 
-  switchHome = writeShellScriptBin "switch-home" ''
-    set -euo pipefail
-    home-manager -b bak switch $@
-    echo "Home generation: $(home-manager generations | head -1)"
+  home-switch = writeShellScriptBin "home-switch" ''
+  echo "$FLAKE#homeConfigurations.$SYSTEM.$HM_USER.activationPackage"
+  nix build --no-update-lock-file ".#homeManagerConfigurations.thiago.activationPackage"
+  ./result/activate
+  rm result
+  '';
+
+  update-system = writeShellScriptBin "update-system" ''
+  sudo nixos-rebuild switch --flake '.#'
   '';
 }
