@@ -33,10 +33,12 @@ with pkgs;
       preallocate-contents = false
       experimental-features = nix-command flakes
     '';
-    nixPath = [
-      "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
-      "home-manager=/etc/${config.environment.etc.home-manager.target}"
-    ];
+    nixPath = let path = toString ./.; in
+      [
+        "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
+        "home-manager=/etc/${config.environment.etc.home-manager.target}"
+        "nixos-config=${path}/configuration.nix"
+      ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
 

@@ -31,6 +31,7 @@
               scripts.update-flake
               scripts.home-switch
               scripts.update-system
+              scripts.flake-mgr
             ];
           };
         }
