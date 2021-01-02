@@ -13,14 +13,17 @@
   boot.kernelModules = [ "kvm-amd" "nct6775" ];
   boot.extraModulePackages = [ ];
 
+  boot.initrd.luks.devices."enc" = {
+    device = "/dev/disk/by-uuid/8f7ffdd8-d20b-4d53-b76a-9120d49bb2d3";
+    allowDiscards = true;
+  };
+
   fileSystems."/" =
     {
       device = "/dev/disk/by-uuid/06bd3d63-2f12-41be-9528-10a637dccbfe";
       fsType = "btrfs";
       options = [ "subvol=@" "compress-force=zstd:1" "noatime" "ssd" ];
     };
-
-  boot.initrd.luks.devices."enc".device = "/dev/disk/by-uuid/8f7ffdd8-d20b-4d53-b76a-9120d49bb2d3";
 
   fileSystems."/home" =
     {

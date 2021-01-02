@@ -21,6 +21,7 @@
     # gnome3
     gnome3.gnome-boxes
     gnome3.gnome-tweaks
+    transmission-gtk
 
     # neovim and language server
     black
@@ -81,7 +82,7 @@
         beautifulsoup4
         click
         cython
-        # gdcm
+        gdcm
         imageio
         ipython
         Keras

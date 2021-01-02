@@ -18,6 +18,31 @@
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, ... }:
+    let
+      mkSystem = system: hostname: nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [
+          (./. + "/host/${hostname}/configuration.nix" )
+        ];
+        specialArgs = { inherit inputs; };
+      };
+
+      mkHomeManagerConfiguration = system: username: home-manager.lib.homeManagerConfiguration {
+        inherit system username;
+          configuration = { pkgs, lib, ... }: {
+            nixpkgs = {
+              config = {
+                allowUnfree = true;
+              };
+            };
+            imports = [
+              (./. + "/home/${username}/home.nix" )
+              ./overlays
+            ];
+          };
+          homeDirectory = "/home/${username}/";
+        };
+    in
     flake-utils.lib.eachDefaultSystem (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
@@ -38,32 +63,11 @@
       ) //
     {
       nixosConfigurations = {
-        watchmen = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            ./host/configuration.nix
-          ];
-          specialArgs = { inherit inputs; };
-        };
+        watchmen = mkSystem "x86_64-linux" "watchmen";
       };
 
       homeManagerConfigurations = {
-        thiago = home-manager.lib.homeManagerConfiguration {
-          configuration = { pkgs, lib, ... }: {
-            nixpkgs = {
-              config = {
-                allowUnfree = true;
-              };
-            };
-            imports = [
-              ./home/home.nix
-              ./overlays
-            ];
-          };
-          system = "x86_64-linux";
-          homeDirectory = "/home/thiago/";
-          username = "thiago";
-        };
+        thiago = mkHomeManagerConfiguration  "x86_64-linux" "thiago";
       };
     };
 }

@@ -47,15 +47,15 @@ in
 
   # wxPython_4_1 = python-super.callPackage ./wxPython/4.1.nix { };
 
-  vtk_9 = python-super.toPythonModule (
-    pkgs.vtk_9.override {
-      inherit (python-self) python;
-      inherit (python-super.darwin) libobjc;
-      inherit (python-super.darwin.apple_sdk.libs) xpc;
-      inherit (python-super.darwin.apple_sdk.frameworks) Cocoa CoreServices DiskArbitration
-        IOKit CFNetwork Security ApplicationServices
-        CoreText IOSurface ImageIO OpenGL GLUT;
-      enablePython = true;
-    }
-  );
+  # vtk_9 = python-super.toPythonModule (
+    # pkgs.vtk_9.override {
+      # inherit (python-self) python;
+      # inherit (python-super.darwin) libobjc;
+      # inherit (python-super.darwin.apple_sdk.libs) xpc;
+      # inherit (python-super.darwin.apple_sdk.frameworks) Cocoa CoreServices DiskArbitration
+        # IOKit CFNetwork Security ApplicationServices
+        # CoreText IOSurface ImageIO OpenGL GLUT;
+      # enablePython = true;
+    # }
+  # );
 }

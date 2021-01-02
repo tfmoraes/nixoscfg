@@ -38,6 +38,7 @@ with pkgs;
         "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
         "home-manager=/etc/${config.environment.etc.home-manager.target}"
         "nixos-config=${path}/configuration.nix"
+        "nixpkgs-overlays=${path}/../overlays/"
       ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
@@ -67,6 +68,9 @@ with pkgs;
       enable = true;
     };
     lxd = {
+      enable = true;
+    };
+    lxc = {
       enable = true;
     };
     podman = {
@@ -258,6 +262,12 @@ with pkgs;
       enable = true;
     };
   };
+
+
+  # 2020-12-25 Bug in systemd-resolved, workaround:
+  # systemd.services.systemd-resolved.environment = with lib; {
+    # LD_LIBRARY_PATH = "${getLib pkgs.libidn2}/lib";
+  # };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
