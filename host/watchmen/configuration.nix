@@ -38,7 +38,7 @@ with pkgs;
         "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
         "home-manager=/etc/${config.environment.etc.home-manager.target}"
         "nixos-config=${path}/configuration.nix"
-        "nixpkgs-overlays=${path}/../overlays/"
+        "nixpkgs-overlays=${path}/../../overlays/"
       ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
