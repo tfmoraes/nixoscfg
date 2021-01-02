@@ -9,10 +9,7 @@ final: prev: {
       rev = "48caf1df8581a9a9da9072f901411b918333952d";
       sha256 = "sha256-gVyVFYMn9UF6U0UQK8oYxFltjS7YQnRKGGzdEQQ1oco=";
     };
-
     buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.tree-sitter ];
-
-    # nativeBuildInputs = oldAttrs.nativeBuildInputs ++ [ prev.pkgs.tree-sitter ];
   });
 
   neovim = prev.neovim.override {

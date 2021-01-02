@@ -34,10 +34,11 @@
               config = {
                 allowUnfree = true;
               };
+              overlays = self.overlays;
             };
             imports = [
               (./. + "/home/${username}/home.nix" )
-              ./overlays
+              # ./overlays
             ];
           };
           homeDirectory = "/home/${username}/";
@@ -69,5 +70,13 @@
       homeManagerConfigurations = {
         thiago = mkHomeManagerConfiguration  "x86_64-linux" "thiago";
       };
+
+      overlays = [
+        (import ./overlays/neovim.nix)
+        (import ./overlays/sumneko.nix)
+        (import ./overlays/vimlsp.nix)
+        (import ./overlays/toolbox.nix)
+        (import ./overlays/python.nix)
+      ];
     };
 }

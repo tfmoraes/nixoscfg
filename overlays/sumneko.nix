@@ -1,3 +1,3 @@
-self: super: {
-  sumneko = super.callPackage ./pkgs/sumneko { };
+final: prev: {
+  sumneko = prev.callPackage ./pkgs/sumneko { };
 }
