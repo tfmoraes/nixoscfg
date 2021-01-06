@@ -15,6 +15,10 @@
       url = "github:numtide/flake-utils";
     };
 
+    neovim-nightly-overlay = {
+      url = "github:nix-community/neovim-nightly-overlay";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, ... }:
@@ -72,11 +76,14 @@
       };
 
       overlays = [
+        inputs.neovim-nightly-overlay.overlay
         (import ./overlays/neovim.nix)
         (import ./overlays/sumneko.nix)
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
+        (import ./overlays/gnome-boxes.nix)
+        (import ./overlays/vtk_7.nix)
       ];
     };
 }

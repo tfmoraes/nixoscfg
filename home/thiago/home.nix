@@ -19,7 +19,7 @@
     nix-index
 
     # gnome3
-    gnome3.gnome-boxes
+    gnome-boxes
     gnome3.gnome-tweaks
     transmission-gtk
 
@@ -53,7 +53,7 @@
     keepassxc
     libreoffice-fresh
     meshlab
-    paraview
+    # paraview
     thunderbird-bin
     vlc
     zettlr
@@ -72,7 +72,7 @@
     starship
     steam-run
     texlive.combined.scheme-full
-    toolbox
+    # toolbox
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
@@ -106,8 +106,8 @@
         seaborn
         sympy
         TheanoWithCuda
-        vtk
-        wxPython_4_0
+        vtk_9
+        wxPython_4_1
       ]))
   ];
 
