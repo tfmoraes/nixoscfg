@@ -25,7 +25,7 @@ with pkgs;
     package = pkgs.nixUnstable;
     useSandbox = true;
     trustedUsers = [ "root" "thiago" ];
-    readOnlyStore = false;
+    # readOnlyStore = false;
     autoOptimiseStore = true;
     extraOptions = ''
       keep-outputs = true
@@ -74,11 +74,11 @@ with pkgs;
     };
     podman = {
       enable = true;
-      extraPackages = [
-        pkgs.crun
-      ];
+      enableNvidia = true;
     };
   };
+
+  xdg.portal.enable = true;
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -96,7 +96,6 @@ with pkgs;
   environment = {
     systemPackages = with pkgs; [
       curl
-      firefox-bin
       git
       vim
       wget
@@ -137,7 +136,7 @@ with pkgs;
       clang
       clang-tools
       nodejs
-      go_bootstrap
+      go
       gnumake
       rustup
       (python3.withPackages (py: [
@@ -196,8 +195,8 @@ with pkgs;
     };
 
     pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
+      enable = false;
+      # package = pkgs.pulseaudioFull;
     };
 
     opengl = {
@@ -208,6 +207,12 @@ with pkgs;
     sane = {
       enable = true;
       extraBackends = with pkgs; [ hplipWithPlugin ];
+    };
+  };
+
+  security = {
+    rtkit = {
+      enable = true;
     };
   };
 
@@ -260,7 +265,18 @@ with pkgs;
     acpid = {
       enable = true;
     };
-  };
+
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      pulse.enable = true;
+      jack.enable = true;
+
+      # use the example session manager (no others are packaged yet)
+      # pwms.enable = true;
+    };
+};
 
 
   # 2020-12-25 Bug in systemd-resolved, workaround:

@@ -19,6 +19,11 @@
       url = "github:nix-community/neovim-nightly-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nix-ld = {
+      url = "github:Mic92/nix-ld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, ... }:
@@ -27,6 +32,7 @@
         inherit system;
         modules = [
           (./. + "/host/${hostname}/configuration.nix" )
+          inputs.nix-ld.nixosModules.nix-ld
         ];
         specialArgs = { inherit inputs; };
       };
@@ -58,6 +64,7 @@
             name = "teste";
             nativeBuildInputs = [
               pkgs.git
+              pkgs.jq
               scripts.update-flake
               scripts.home-switch
               scripts.update-system
@@ -80,10 +87,9 @@
         (import ./overlays/neovim.nix)
         (import ./overlays/sumneko.nix)
         (import ./overlays/vimlsp.nix)
-        (import ./overlays/toolbox.nix)
+        # (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
-        (import ./overlays/gnome-boxes.nix)
-        (import ./overlays/vtk_7.nix)
+        # (import ./overlays/gnome-boxes.nix)
       ];
     };
 }

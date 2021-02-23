@@ -19,14 +19,14 @@
     nix-index
 
     # gnome3
-    gnome-boxes
+    gnome3.gnome-boxes
     gnome3.gnome-tweaks
     transmission-gtk
 
     # neovim and language server
     black
     clang-analyzer
-    # cmake-language-server
+    cmake-language-server
     glow
     gopls
     ltrace
@@ -44,7 +44,7 @@
     strace
     # sumneko
     universal-ctags
-    # vimlsp
+    vimlsp
     vscode
 
     chromium
@@ -55,6 +55,7 @@
     meshlab
     # paraview
     thunderbird-bin
+    virtmanager
     vlc
     zettlr
     zotero
@@ -90,7 +91,7 @@
         keras-preprocessing
         matplotlib
         networkx
-        # nibabel
+        nibabel
         numba
         numpy
         opencv4
@@ -107,7 +108,7 @@
         sympy
         TheanoWithCuda
         vtk_9
-        wxPython_4_1
+        wxPython_4_0
       ]))
   ];
 
@@ -142,6 +143,10 @@
     starship = {
       enable = true;
       enableFishIntegration = true;
+    };
+
+    firefox = {
+      enable = true;
     };
 
     fish = {
@@ -216,6 +221,18 @@
   };
 
   home.file = rec {
+    ".config/fish/functions/nix-shell-with-gc.fish".text = ''
+      function nix-shell-with-gc
+        mkdir -p .gcroots
+
+        # add shell as gc-root in /nix/var/nix/gcroots/auto
+        nix-instantiate shell.nix --indirect --add-root $PWD/.gcroots/shell.drv
+
+        nix-shell (readlink $PWD/.gcroots/shell.drv) $argv[2..-1]
+      end
+    '';
+
+
     # "bin/command-not-found-handle".text = ''
     # #!/usr/bin/env bash
     # source ${pkgs.nix-index}/etc/profile.d/command-not-found.sh
