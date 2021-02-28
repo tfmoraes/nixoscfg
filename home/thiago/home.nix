@@ -73,7 +73,7 @@
     starship
     steam-run
     texlive.combined.scheme-full
-    # toolbox
+    toolbox
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
