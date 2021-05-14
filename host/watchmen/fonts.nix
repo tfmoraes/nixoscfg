@@ -20,6 +20,8 @@ with pkgs; {
       liberation_ttf
       source-code-pro
       jetbrains-mono
+      montserrat
+      inter
     ];
   };
 }

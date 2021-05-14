@@ -22,28 +22,28 @@
     {
       device = "/dev/disk/by-uuid/06bd3d63-2f12-41be-9528-10a637dccbfe";
       fsType = "btrfs";
-      options = [ "subvol=@" "compress-force=zstd:1" "noatime" "ssd" ];
+      options = [ "subvol=@" "compress-force=zstd:1" "noatime" "ssd" "discard=async" "space_cache=v2" ];
     };
 
   fileSystems."/home" =
     {
       device = "/dev/disk/by-uuid/06bd3d63-2f12-41be-9528-10a637dccbfe";
       fsType = "btrfs";
-      options = [ "subvol=@home" "compress-force=zstd:1" "noatime" "ssd" ];
+      options = [ "subvol=@home" "compress-force=zstd:1" "noatime" "ssd" "discard=async" "space_cache=v2" ];
     };
 
   fileSystems."/nix" =
     {
       device = "/dev/disk/by-uuid/06bd3d63-2f12-41be-9528-10a637dccbfe";
       fsType = "btrfs";
-      options = [ "subvol=@nix" "compress-force=zstd:1" "noatime" "ssd" ];
+      options = [ "subvol=@nix" "compress-force=zstd:1" "noatime" "ssd" "discard=async" "space_cache=v2" ];
     };
 
   fileSystems."/var/log" =
     {
       device = "/dev/disk/by-uuid/06bd3d63-2f12-41be-9528-10a637dccbfe";
       fsType = "btrfs";
-      options = [ "subvol=@log" "compress-force=zstd:1" "noatime" "ssd" ];
+      options = [ "subvol=@log" "compress-force=zstd:1" "noatime" "ssd" "discard=async" "space_cache=v2" ];
       neededForBoot = true;
     };
 

@@ -21,6 +21,13 @@ in
     };
   });
 
+  # dask = python-super.dask.overrideAttrs (oldAttrs: rec {
+    # pytestFlagsArray = [
+      # "-n $NIX_BUILD_CORES"
+      # "-m 'not network'"
+    # ];
+  # });
+
   # fsspec = python-super.fsspec.overrideAttrs (oldAttrs: rec {
     # disabledTests = [
       # # Test assumes user name is part of $HOME

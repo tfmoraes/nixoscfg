@@ -3,23 +3,21 @@
 with pkgs; {
 
   services = {
-
     xserver = {
       displayManager.gdm = {
         enable = true;
         #nvidiaWayland = true;
       };
-      desktopManager.gnome3.enable = true;
+      desktopManager.gnome.enable = true;
     };
 
-    gnome3 = {
+    gnome = {
       gnome-user-share.enable = true;
       chrome-gnome-shell.enable = true;
       tracker.enable = true;
       tracker-miners.enable = true;
       experimental-features.realtime-scheduling = true;
     };
-
   };
 
   qt5 = {
@@ -32,10 +30,17 @@ with pkgs; {
     gnupg.agent.pinentryFlavor = "gnome3";
   };
 
-  environment.gnome3.excludePackages = with pkgs.gnome3; [
-    epiphany
-    geary
-    #gnome-software
-    #gnome-packagekit
-  ];
+  environment = {
+    gnome.excludePackages = with pkgs.gnome; [
+      epiphany
+      geary
+      #gnome-software
+      #gnome-packagekit
+    ];
+
+    systemPackages = with pkgs; [
+      qt5.qtwayland
+      hicolor-icon-theme
+    ];
+  };
 }

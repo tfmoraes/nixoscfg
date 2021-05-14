@@ -63,19 +63,19 @@ with pkgs;
       enable = true;
       enableNvidia = true;
     };
-    libvirtd = {
-      enable = true;
-    };
-    lxd = {
-      enable = true;
-    };
-    lxc = {
-      enable = true;
-    };
     podman = {
       enable = true;
       enableNvidia = true;
     };
+    libvirtd = {
+      enable = true;
+    };
+    # lxd = {
+    # enable = true;
+    # };
+    # lxc = {
+    # enable = true;
+    # };
   };
 
   xdg.portal.enable = true;
@@ -159,6 +159,10 @@ with pkgs;
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
+    };
+
+    steam = {
+      enable = true;
     };
   };
 
@@ -276,12 +280,12 @@ with pkgs;
       # use the example session manager (no others are packaged yet)
       # pwms.enable = true;
     };
-};
+  };
 
 
   # 2020-12-25 Bug in systemd-resolved, workaround:
   # systemd.services.systemd-resolved.environment = with lib; {
-    # LD_LIBRARY_PATH = "${getLib pkgs.libidn2}/lib";
+  # LD_LIBRARY_PATH = "${getLib pkgs.libidn2}/lib";
   # };
 
   # This value determines the NixOS release from which the default

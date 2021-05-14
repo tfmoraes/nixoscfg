@@ -18,9 +18,9 @@
     niv
     nix-index
 
-    # gnome3
-    gnome3.gnome-boxes
-    gnome3.gnome-tweaks
+    # gnome
+    gnome.gnome-boxes
+    gnome.gnome-tweak-tool
     transmission-gtk
 
     # neovim and language server
@@ -38,6 +38,7 @@
     nixpkgs-fmt
     nodePackages.pyright
     nodePackages.vim-language-server
+    nodePackages.vscode-html-languageserver-bin
     python-language-server
     rnix-lsp
     rust-analyzer
@@ -46,6 +47,7 @@
     universal-ctags
     vimlsp
     vscode
+    tree-sitter
 
     chromium
     gimp
@@ -64,9 +66,9 @@
     binutils
     buildah
     fdupes
-    #ffmpeg-full
+    ffmpeg-full
     gitg
-    haskellPackages.pandoc-citeproc
+    # haskellPackages.pandoc-citeproc
     imagemagick
     pandoc
     patchelf
@@ -77,6 +79,10 @@
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
+
+    cudatoolkit
+    cudnn
+    opencl-icd
 
     (pkgs.python3.withPackages (ps:
       with ps; [
@@ -114,11 +120,13 @@
 
   services = {
 
-    nextcloud-client = { enable = true; };
+    nextcloud-client = {
+      enable = true;
+    };
 
     # dropbox = {
-    # enable = true;
-    #path = "${config.home.homeDirectory}/Dropbox/";
+      # enable = true;
+    # # path = "${config.home.homeDirectory}/Dropbox/";
     # };
 
     gnome-keyring = { enable = true; };

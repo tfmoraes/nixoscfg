@@ -89,6 +89,7 @@
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
+        # (import ./overlays/zettlr.nix)
         # (import ./overlays/gnome-boxes.nix)
       ];
     };
