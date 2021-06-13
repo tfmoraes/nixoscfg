@@ -25,7 +25,7 @@ with pkgs;
     package = pkgs.nixUnstable;
     useSandbox = true;
     trustedUsers = [ "root" "thiago" ];
-    # readOnlyStore = false;
+    readOnlyStore = false;
     autoOptimiseStore = true;
     extraOptions = ''
       keep-outputs = true
@@ -206,6 +206,9 @@ with pkgs;
     opengl = {
       driSupport = true;
       driSupport32Bit = true;
+      extraPackages32 = with pkgs.pkgsi686Linux;
+      [ libva ]
+      ++ lib.optionals config.services.pipewire.enable [ pipewire ];
     };
 
     sane = {

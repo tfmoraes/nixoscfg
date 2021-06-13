@@ -33,6 +33,7 @@
     luajitPackages.lua-lsp
     neovim
     neovim-qt
+    neovide
     neovim-remote
     ninja
     nixpkgs-fmt
@@ -106,6 +107,8 @@
         psutil
         pydot
         pypubsub
+        pygobject3
+        pycairo
         requests
         scikitimage
         scikitlearn
