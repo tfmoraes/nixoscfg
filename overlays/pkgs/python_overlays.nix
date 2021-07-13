@@ -22,10 +22,9 @@ in
   });
 
   # dask = python-super.dask.overrideAttrs (oldAttrs: rec {
-    # pytestFlagsArray = [
-      # "-n $NIX_BUILD_CORES"
-      # "-m 'not network'"
-    # ];
+    # doCheck = false;
+    # doInstallCheck = false;
+    # checkInputs = [];
   # });
 
   # fsspec = python-super.fsspec.overrideAttrs (oldAttrs: rec {

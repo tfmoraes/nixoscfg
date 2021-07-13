@@ -40,6 +40,7 @@
     nodePackages.pyright
     nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
+    nodePackages.prettier
     python-language-server
     rnix-lsp
     rust-analyzer
@@ -93,6 +94,7 @@
         gdcm
         imageio
         ipython
+        isort
         Keras
         keras-applications
         keras-preprocessing
@@ -105,10 +107,10 @@
         pandas
         plaidml
         psutil
-        pydot
-        pypubsub
-        pygobject3
         pycairo
+        pydot
+        pygobject3
+        pypubsub
         requests
         scikitimage
         scikitlearn
@@ -118,6 +120,7 @@
         TheanoWithCuda
         vtk_9
         wxPython_4_0
+        yapf
       ]))
   ];
 
@@ -176,7 +179,10 @@
     direnv = {
       enable = true;
       enableFishIntegration = true;
-      enableNixDirenvIntegration = true;
+      nix-direnv = {
+        enable = true;
+        enableFlakes = true;
+      };
       # stdlib = ''
       # mkdir -p $HOME/.cache/direnv/layouts
       # pwd_hash=$(echo -n $PWD | shasum | cut -d ' ' -f 1)
@@ -200,6 +206,9 @@
       signing = {
         signByDefault = true;
         key = "1B96996EE6559B7A";
+      };
+      extraConfig = {
+        init.defaultBranch = "main";
       };
     };
 

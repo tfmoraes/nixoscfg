@@ -36,8 +36,8 @@ final: prev: {
     src = prev.fetchFromGitHub {
       owner = "equalsraf";
       repo = "neovim-qt";
-      rev = "a7c7d0c0fb90e03119b95c49e07cfb5243829917";
-      sha256 = "sha256-n+hPkW4lVLMy9QABMhw8Zn+Hju+pcKoWajMWjofGlrQ=";
+      rev = "85ade6728307645a22491d3673af06e82d2ee909";
+      sha256 = "sha256-EhYEPcqsJbW4Bc/zHhjcXIv504veQQ4HNXXa09pbnQ8=";
     };
   });
 }

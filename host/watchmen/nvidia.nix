@@ -2,9 +2,16 @@
 
 {
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.nvidia.modesetting.enable = true;
-  hardware.opengl.extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
-  hardware.opengl.extraPackages32 = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
-  # hardware.nvidia.nvidiaPersistenced = false;
+  hardware = {
+    nvidia = {
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      modesetting.enable = true;
+      # nvidiaPersistenced = false;
+    };
+    opengl = {
+      extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+      extraPackages32 = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+    };
+  };
   systemd.enableUnifiedCgroupHierarchy = false;
 }

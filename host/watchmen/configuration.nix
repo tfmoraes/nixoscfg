@@ -194,6 +194,8 @@ with pkgs;
 
     enableAllFirmware = true;
 
+    enableRedistributableFirmware = true;
+
     cpu = {
       amd.updateMicrocode = true;
     };

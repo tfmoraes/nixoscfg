@@ -13,4 +13,9 @@ self: super: {
     packageOverrides = import ./pkgs/python_overlays.nix;
     self = super.python38;
   };
+
+  python39 = super.python39.override {
+    packageOverrides = import ./pkgs/python_overlays.nix;
+    self = super.python39;
+  };
 }

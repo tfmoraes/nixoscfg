@@ -6,7 +6,7 @@ with pkgs; {
     xserver = {
       displayManager.gdm = {
         enable = true;
-        #nvidiaWayland = true;
+        nvidiaWayland = true;
       };
       desktopManager.gnome.enable = true;
     };
@@ -28,6 +28,7 @@ with pkgs; {
 
   programs = {
     gnupg.agent.pinentryFlavor = "gnome3";
+    xwayland.enable = true;
   };
 
   environment = {
