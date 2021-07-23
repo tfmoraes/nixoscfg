@@ -8,6 +8,7 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
+      trustedInterfaces = [ "virbr0" ];
       # allowedTCPPorts = [ 80 443 ];
     };
   };

@@ -56,7 +56,6 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/0d9cd9ee-94bd-4235-9fb0-68c6f130cce6"; }];
 
-
   services.beesd.filesystems = {
     root = {
       spec = "LABEL=root";

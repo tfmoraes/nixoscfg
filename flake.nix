@@ -31,30 +31,36 @@
       mkSystem = system: hostname: nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
-          (./. + "/host/${hostname}/configuration.nix" )
+          (./. + "/host/${hostname}/configuration.nix")
           inputs.nix-ld.nixosModules.nix-ld
+          {
+            nixpkgs.overlays = [
+              (import ./overlays/system-config-printer.nix)
+            ];
+          }
         ];
         specialArgs = { inherit inputs; };
       };
 
       mkHomeManagerConfiguration = system: username: home-manager.lib.homeManagerConfiguration {
         inherit system username;
-          configuration = { pkgs, lib, ... }: {
-            nixpkgs = {
-              config = {
-                allowUnfree = true;
-              };
-              overlays = self.overlays;
+        configuration = { pkgs, lib, ... }: {
+          nixpkgs = {
+            config = {
+              allowUnfree = true;
             };
-            imports = [
-              (./. + "/home/${username}/home.nix" )
-              # ./overlays
-            ];
+            overlays = self.overlays;
           };
-          homeDirectory = "/home/${username}/";
+          imports = [
+            (./. + "/home/${username}/home.nix")
+            # ./overlays
+          ];
         };
+        homeDirectory = "/home/${username}/";
+      };
     in
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachDefaultSystem
+      (system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
           scripts = import ./lib/scripts.nix { inherit pkgs; };
@@ -79,7 +85,7 @@
       };
 
       homeManagerConfigurations = {
-        thiago = mkHomeManagerConfiguration  "x86_64-linux" "thiago";
+        thiago = mkHomeManagerConfiguration "x86_64-linux" "thiago";
       };
 
       overlays = [
@@ -89,6 +95,7 @@
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
+        (import ./overlays/system-config-printer.nix)
         # (import ./overlays/zettlr.nix)
         # (import ./overlays/gnome-boxes.nix)
       ];

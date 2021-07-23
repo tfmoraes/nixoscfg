@@ -8,7 +8,12 @@ with pkgs; {
         enable = true;
         nvidiaWayland = true;
       };
-      desktopManager.gnome.enable = true;
+      desktopManager = {
+        gnome = {
+          enable = true;
+          sessionPath = with pkgs.gnome; [ mutter gnome-shell nautilus ];
+        };
+      };
     };
 
     gnome = {
