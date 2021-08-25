@@ -34,9 +34,9 @@
           (./. + "/host/${hostname}/configuration.nix")
           inputs.nix-ld.nixosModules.nix-ld
           {
-            nixpkgs.overlays = [
-              (import ./overlays/system-config-printer.nix)
-            ];
+            # nixpkgs.overlays = [
+              # (import ./overlays/system-config-printer.nix)
+            # ];
           }
         ];
         specialArgs = { inherit inputs; };
@@ -95,7 +95,7 @@
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
-        (import ./overlays/system-config-printer.nix)
+        # (import ./overlays/system-config-printer.nix)
         # (import ./overlays/zettlr.nix)
         # (import ./overlays/gnome-boxes.nix)
       ];

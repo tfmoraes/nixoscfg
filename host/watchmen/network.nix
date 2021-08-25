@@ -4,8 +4,11 @@
   networking = {
     hostName = "watchmen";
     useDHCP = false;
+    #useNetworkd = true;
     #interfaces.enp3s0.useDHCP = false;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+    };
     firewall = {
       enable = true;
       trustedInterfaces = [ "virbr0" ];

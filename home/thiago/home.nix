@@ -16,7 +16,6 @@
     htop
     ncdu
     niv
-    nix-index
 
     # gnome
     gnome.gnome-boxes
@@ -33,7 +32,7 @@
     luajitPackages.lua-lsp
     neovim
     neovim-qt
-    neovide
+    #neovide
     neovim-remote
     ninja
     nixpkgs-fmt
@@ -58,7 +57,7 @@
     libreoffice-fresh
     meshlab
     # paraview
-    thunderbird-bin
+    thunderbird
     virtmanager
     vlc
     zettlr
@@ -131,7 +130,7 @@
     };
 
     # dropbox = {
-      # enable = true;
+    # enable = true;
     # # path = "${config.home.homeDirectory}/Dropbox/";
     # };
 
@@ -190,7 +189,14 @@
       # '';
     };
 
-    command-not-found = { enable = true; };
+    #command-not-found = {
+    #  enable = true;
+    #};
+
+    nix-index = {
+      enable = true;
+      enableFishIntegration = true;
+    };
 
     git = {
       enable = true;
