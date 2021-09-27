@@ -21,7 +21,7 @@ with pkgs; {
       chrome-gnome-shell.enable = true;
       tracker.enable = true;
       tracker-miners.enable = true;
-      experimental-features.realtime-scheduling = true;
+      # experimental-features.realtime-scheduling = true;
     };
   };
 

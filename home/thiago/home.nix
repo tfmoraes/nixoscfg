@@ -25,7 +25,7 @@
     # neovim and language server
     black
     clang-analyzer
-    cmake-language-server
+    # cmake-language-server
     glow
     gopls
     ltrace
