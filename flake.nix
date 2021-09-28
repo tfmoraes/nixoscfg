@@ -67,7 +67,7 @@
         in
         {
           devShell = pkgs.mkShell {
-            name = "teste";
+            name = "nixos-flakes";
             nativeBuildInputs = [
               pkgs.git
               pkgs.jq

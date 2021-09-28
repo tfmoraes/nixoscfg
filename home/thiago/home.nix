@@ -56,6 +56,7 @@
     keepassxc
     libreoffice-fresh
     meshlab
+    pavucontrol
     # paraview
     thunderbird
     virtmanager
