@@ -283,6 +283,7 @@
     # RUNFILES_DIR = "${pkgs.python3Packages.plaidml}/share/plaidml";
     LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.ocl-icd}/lib";
     EDITOR = "nvim";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   home.stateVersion = "20.09";
