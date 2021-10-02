@@ -130,6 +130,8 @@ with pkgs;
       ripgrep
       tokei
 
+      egl-wayland
+
       docker-compose
 
       gcc
