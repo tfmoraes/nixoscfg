@@ -35,9 +35,10 @@
           inputs.nix-ld.nixosModules.nix-ld
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
-              # (import ./overlays/egl-wayland.nix)
+              (import ./overlays/tracker.nix)
             ];
-          })
+          }
+          )
         ];
         specialArgs = { inherit inputs; };
       };
@@ -95,6 +96,7 @@
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
+        (import ./overlays/tracker.nix)
         # (import ./overlays/egl-wayland.nix)
         # (import ./overlays/system-config-printer.nix)
         # (import ./overlays/zettlr.nix)

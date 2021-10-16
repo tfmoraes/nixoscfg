@@ -50,15 +50,15 @@
     vscode
     tree-sitter
 
-    chromium
-    gimp
-    inkscape
+    # chromium
+    # gimp
+    # inkscape
     keepassxc
-    libreoffice-fresh
-    meshlab
+    # libreoffice-fresh
+    # meshlab
     pavucontrol
     # paraview
-    thunderbird
+    thunderbird-bin
     virtmanager
     vlc
     zettlr
@@ -162,6 +162,13 @@
     firefox = {
       enable = true;
       package = pkgs.firefox-bin;
+    };
+
+    chromium = {
+      enable = true;
+      package = pkgs.chromium.override {
+        commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+      };
     };
 
     fish = {
@@ -285,6 +292,7 @@
     LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.ocl-icd}/lib";
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland-egl";
   };
 
   home.stateVersion = "20.09";
