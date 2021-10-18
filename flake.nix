@@ -6,6 +6,8 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    colen_nixpkgs.url = "github:colemickens/nixpkgs/cmpkgs";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,7 +37,8 @@
           inputs.nix-ld.nixosModules.nix-ld
           ({ pkgs, ... }: {
             nixpkgs.overlays = [
-              (import ./overlays/tracker.nix)
+              # (import ./overlays/tracker.nix)
+              (import ./overlays/egl-wayland.nix)
             ];
           }
           )
@@ -96,8 +99,8 @@
         (import ./overlays/vimlsp.nix)
         (import ./overlays/toolbox.nix)
         (import ./overlays/python.nix)
-        (import ./overlays/tracker.nix)
-        # (import ./overlays/egl-wayland.nix)
+        # (import ./overlays/tracker.nix)
+        (import ./overlays/egl-wayland.nix)
         # (import ./overlays/system-config-printer.nix)
         # (import ./overlays/zettlr.nix)
         # (import ./overlays/gnome-boxes.nix)

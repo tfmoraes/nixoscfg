@@ -32,7 +32,7 @@
     luajitPackages.lua-lsp
     neovim
     neovim-qt
-    #neovide
+    neovide
     neovim-remote
     ninja
     nixpkgs-fmt
