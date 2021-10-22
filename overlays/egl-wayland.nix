@@ -12,14 +12,31 @@ final: prev: {
     buildInputs = old.buildInputs ++ [ final.wayland-protocols ];
   });
 
-  # xwayland = prev.xwayland.overrideAttrs (old: rec{
-  #   patches = [
-  #       (prev.fetchpatch {
-  #         name = "766.patch";
-  #         url = "https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/766.patch";
-  #         sha256 = "sha256-Fqzphpa7neGOdktOxnevNPGlzwzo/yKckMvGcqHlCmM=";
-  #       })
+
+  xwayland = prev.xwayland.overrideAttrs (old: rec{
+    version = "21.1.2.901";
+    src = prev.fetchFromGitLab {
+      domain = "gitlab.freedesktop.org";
+      owner = "xorg";
+      repo = "xserver";
+      rev = "xwayland-21.1.2.901";
+      sha256 = "sha256-TOsxN+TVMICYhqkypqrFgzI/ln87ALb9LijPgHmlcos=";
+    };
+  });
+
+  # gnome = prev.gnome.overrideScope' (selfx: superx: {
+  #   mutter = superx.mutter.overrideAttrs (old: {
+  #     mesonFlags = [
+  #       "-Degl_device=true"
+  #       "-Dinstalled_tests=false" # TODO: enable these
+  #       "-Dwayland_eglstream=false"
+  #       "-Dprofiler=true"
+  #       "-Dxwayland_path=${final.xwayland}/bin/Xwayland"
+  #       # This should be auto detected, but it looks like it manages a false
+  #       # positive.
+  #       "-Dxwayland_initfd=disabled"
   #     ];
+  #   });
   # });
 
   # mesa = prev.mesa.overrideAttrs (old: rec{

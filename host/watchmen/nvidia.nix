@@ -1,25 +1,18 @@
 { config, pkgs, inputs, ... }:
 
 let
-  cpkgs = import inputs.colen_nixpkgs {
-    config = {
-      allowUnfree = true;
-    };
-    system = "x86_64-linux";
-  };
+  nvidia_beta = config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old: rec {
+    libPath = old.libPath + ":" + pkgs.lib.makeLibraryPath [
+      pkgs.wayland
+      pkgs.mesa
+    ];
+  });
 in
 {
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware = {
     nvidia = {
-      package = cpkgs.linuxPackages_latest.nvidia_x11_beta;
-      # package = config.boot.kernelPackages.nvidiaPackages.beta.overrideAttrs (old: rec {
-      #   libPath = old.libPath + ":" + pkgs.lib.makeLibraryPath [
-      #     pkgs.wayland
-      #     pkgs.mesa
-      #   ];
-      # }
-      # );
+      package = nvidia_beta;
       modesetting.enable = true;
       # nvidiaPersistenced = false;
     };
@@ -29,11 +22,21 @@ in
     };
   };
   systemd.enableUnifiedCgroupHierarchy = false;
+
+  # environment.etc."egl/egl_external_platform.d/01_nvidia_wayland.json".text = ''
+  #     {
+  #       "file_format_version" : "1.0.0",
+  #       "ICD" : {
+  #           "library_path" : "${pkgs.egl-wayland}/lib/libnvidia-egl-wayland.so"
+  #       }
+  #   }
+  # '';
+
   environment.etc."egl/egl_external_platform.d/10_nvidia_wayland.json".text = ''
       {
         "file_format_version" : "1.0.0",
         "ICD" : {
-            "library_path" : "${pkgs.egl-wayland}/lib/libnvidia-egl-wayland.so"
+            "library_path" : "/run/opengl-driver/lib/libnvidia-egl-wayland.so"
         }
     }
   '';
@@ -55,4 +58,14 @@ in
       }
     }
   '';
+
+  environment.etc."OpenCL/vendors/nvidia.icd".source = "${nvidia_beta}/etc/OpenCL/vendors/nvidia.icd";
+
+  environment.etc."gbm/nvidia-drm_gbm.so".source = "${nvidia_beta}/lib/libnvidia-allocator.so";
+
+  environment.variables = {
+    "GBM_BACKENDS_PATH" = "/etc/gbm";
+    "GBM_BACKEND" = "nvidia-drm";
+    "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+  };
 }

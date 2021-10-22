@@ -6,8 +6,6 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
-    colen_nixpkgs.url = "github:colemickens/nixpkgs/cmpkgs";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
