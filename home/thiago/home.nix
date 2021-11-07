@@ -40,6 +40,7 @@
     nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
+    texlab
     python-language-server
     rnix-lsp
     rust-analyzer
@@ -64,7 +65,9 @@
     zettlr
     zotero
 
+    alacritty
     appimage-run
+    babelfish
     binutils
     buildah
     fdupes
@@ -167,13 +170,21 @@
     chromium = {
       enable = true;
       package = pkgs.chromium.override {
-        commandLineArgs = "--enable-features=UseOzonePlatform --ozone-platform=wayland";
+        commandLineArgs = ''
+          --enable-features=UseOzonePlatform \
+          --ozone-platform=wayland \
+          --ignore-gpu-blocklist \
+          --enable-gpu-rasterization \
+          --enable-zero-copy \
+          --disable-gpu-driver-bug-workarounds \
+          --enable-features=VaapiVideoDecoder
+          '';
       };
     };
 
     fish = {
       enable = true;
-      promptInit = ''
+      interactiveShellInit = ''
         any-nix-shell fish --info-right | source
       '';
       functions = { fish_greeting = ""; };

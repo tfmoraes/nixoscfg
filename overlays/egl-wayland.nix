@@ -1,13 +1,13 @@
 final: prev: {
   egl-wayland = prev.egl-wayland.overrideAttrs (old: rec {
     pname = "egl-wayland";
-    version = "1.1.9";
+    version = "1.1.9.999";
     name = "${pname}-${version}";
     src = final.fetchFromGitHub {
       owner = "Nvidia";
       repo = "egl-wayland";
-      rev = "1.1.9";
-      sha256 = "sha256-rcmGVEcOtKTR8sVkHV7Xb+8NuKWUapYn+/Fswi4z6Mc=";
+      rev = "daab8546eca8428543a4d958a2c53fc747f70672";
+      sha256 = "sha256-IrLeqBW74mzo2OOd5GzUPDcqaxrsoJABwYyuKTGtPsw=";
     };
     buildInputs = old.buildInputs ++ [ final.wayland-protocols ];
   });

@@ -61,6 +61,7 @@
       spec = "LABEL=root";
       hashTableSizeMB = 1024;
       verbosity = "info";
+      extraOptions = [ "--thread-count" "1" ];
     };
   };
 }
