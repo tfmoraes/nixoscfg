@@ -200,7 +200,7 @@
       enableFishIntegration = true;
       nix-direnv = {
         enable = true;
-        enableFlakes = true;
+        # enableFlakes = true;
       };
       # stdlib = ''
       # mkdir -p $HOME/.cache/direnv/layouts
