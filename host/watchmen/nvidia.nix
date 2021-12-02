@@ -61,7 +61,7 @@
   # environment.etc."gbm/nvidia-drm_gbm.so".source = "${nvidia_pkg}/lib/libnvidia-allocator.so";
 
   environment.variables = {
-    "GBM_BACKENDS_PATH" = "/run/opengl-driver/lib/gbm";
+    # "GBM_BACKENDS_PATH" = "/run/opengl-driver/lib/gbm";
     "GBM_BACKEND" = "nvidia-drm";
     "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
     "OCL_ICD_VENDORS" = "/run/opengl-driver/etc/OpenCL/vendors";

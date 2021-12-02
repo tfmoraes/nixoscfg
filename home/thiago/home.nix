@@ -303,9 +303,9 @@
     # LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.ocl-icd}/lib";
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
-    # QT_QPA_PLATFORM = "wayland";
-    # CLUTTER_BACKEND = "wayland";
-    # SDL_VIDEODRIVER = "wayland";
+    QT_QPA_PLATFORM = "wayland";
+    CLUTTER_BACKEND = "wayland";
+    SDL_VIDEODRIVER = "wayland";
   };
 
   home.stateVersion = "20.09";

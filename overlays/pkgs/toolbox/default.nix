@@ -9,39 +9,39 @@
 
 buildGoModule rec {
   pname = "toolbox";
-  version = "0.0.99";
+  version = "0.0.99.2";
 
   src = fetchFromGitHub {
     owner = "containers";
     repo = "toolbox";
     rev = version;
-    sha256 = "CKjndWXDLxQ5epco/+TwRFxftbeMhYp/7NOWglF6EL8=";
+    sha256 = "sha256-W8SDmF4ht8AwhMwcbvys+eZCtvq2KPK9U0awv4QkGSM=";
   };
 
   modRoot = "src";
 
   patches = [
     ./toolbox_glibc.patch
-    (fetchpatch {
-      url = "https://github.com/containers/toolbox/commit/14cacc4ea6dc8fc51cb1e6bffa221e2dbcb61a0b.patch";
-      sha256 = "DFakCVBj/RgKU5pem3KxKgjorl8FNlHApR56wxWpkpA=";
-    })
-    (fetchpatch {
-      url = "https://github.com/containers/toolbox/commit/a0f34e65c0c6b25b9300ed5f511403a29943a06a.patch";
-      sha256 = "9PZ7pDKlvkpEBQMyfR089nkDvRNRQ4Xzcij3ku1cdqE=";
-    })
+    # (fetchpatch {
+    #   url = "https://github.com/containers/toolbox/commit/14cacc4ea6dc8fc51cb1e6bffa221e2dbcb61a0b.patch";
+    #   sha256 = "DFakCVBj/RgKU5pem3KxKgjorl8FNlHApR56wxWpkpA=";
+    # })
+    # (fetchpatch {
+    #   url = "https://github.com/containers/toolbox/commit/a0f34e65c0c6b25b9300ed5f511403a29943a06a.patch";
+    #   sha256 = "9PZ7pDKlvkpEBQMyfR089nkDvRNRQ4Xzcij3ku1cdqE=";
+    # })
 
-    (fetchpatch {
-      url = "https://gist.githubusercontent.com/tfmoraes/583bb66269216768fbe72b4e57cdd221/raw/149b5e7703dd6eb25590dd0705cac9c1a9cb65ae/etc_static.patch";
-      sha256 = "B6J5cLVKmtWX6TL/REJBb5oi120YFmRlQhPp2aKACrs=";
-    })
+    # (fetchpatch {
+    #   url = "https://gist.githubusercontent.com/tfmoraes/583bb66269216768fbe72b4e57cdd221/raw/149b5e7703dd6eb25590dd0705cac9c1a9cb65ae/etc_static.patch";
+    #   sha256 = "B6J5cLVKmtWX6TL/REJBb5oi120YFmRlQhPp2aKACrs=";
+    # })
   ];
 
   postPatch = ''
     substituteInPlace src/cmd/create.go --subst-var-by glibc ${glibc}
   '';
 
-  vendorSha256 = "06s97kpbw40571jjp96jpld1qxb2frd4akcrwwxi1minvs24lb5p";
+  vendorSha256 = "sha256-wBYpOk+q9hIDfSrACjvv77CRUsXYSMl0eiUrJatnN30=";
 
   buildFlagsArray = [
     "-ldflags=-X github.com/containers/toolbox/pkg/version.currentVersion=${version}"

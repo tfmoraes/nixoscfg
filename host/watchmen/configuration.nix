@@ -13,6 +13,7 @@ with pkgs;
       ./fonts.nix
       ./dropbox.nix
       ./users.nix
+      # ./nix-ld.nix
     ];
 
   nixpkgs = {
@@ -78,7 +79,15 @@ with pkgs;
     # };
   };
 
-  xdg.portal.enable = true;
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-kde
+      ];
+    };
+  };
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -131,6 +140,7 @@ with pkgs;
       tokei
 
       egl-wayland
+      qt5.qtwayland
 
       docker-compose
 
@@ -211,8 +221,8 @@ with pkgs;
       driSupport = true;
       driSupport32Bit = true;
       extraPackages32 = with pkgs.pkgsi686Linux;
-      [ libva ]
-      ++ lib.optionals config.services.pipewire.enable [ pipewire ];
+        [ libva ]
+        ++ lib.optionals config.services.pipewire.enable [ pipewire ];
     };
 
     sane = {
