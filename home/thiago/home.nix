@@ -16,6 +16,7 @@
     htop
     ncdu
     niv
+    byobu
 
     # gnome
     gnome.gnome-boxes
@@ -98,9 +99,9 @@
         imageio
         ipython
         isort
-        Keras
-        keras-applications
-        keras-preprocessing
+        # Keras
+        # keras-applications
+        # keras-preprocessing
         matplotlib
         networkx
         nibabel
@@ -108,7 +109,7 @@
         numpy
         opencv4
         pandas
-        plaidml
+        # plaidml
         psutil
         pycairo
         pydot
@@ -303,10 +304,11 @@
     # LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.ocl-icd}/lib";
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland-egl";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
     CLUTTER_BACKEND = "wayland";
     SDL_VIDEODRIVER = "wayland";
   };
 
-  home.stateVersion = "20.09";
+  home.stateVersion = "21.11";
 }

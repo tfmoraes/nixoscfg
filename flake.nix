@@ -59,6 +59,7 @@
           ];
         };
         homeDirectory = "/home/${username}/";
+        stateVersion = "21.11";
       };
     in
     flake-utils.lib.eachDefaultSystem
