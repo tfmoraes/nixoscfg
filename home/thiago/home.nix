@@ -48,7 +48,7 @@
     strace
     # sumneko
     universal-ctags
-    vimlsp
+    # vimlsp
     vscode
     tree-sitter
 
