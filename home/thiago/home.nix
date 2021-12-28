@@ -30,7 +30,6 @@
     glow
     gopls
     ltrace
-    luajitPackages.lua-lsp
     neovim
     neovim-qt
     neovide
@@ -41,6 +40,7 @@
     nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
+    sumneko-lua-language-server
     texlab
     python-language-server
     rnix-lsp
