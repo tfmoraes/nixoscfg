@@ -67,6 +67,11 @@ with pkgs;
     podman = {
       enable = true;
       enableNvidia = true;
+      extraPackages = with pkgs; [
+        skopeo
+        conmon
+        runc
+      ];
     };
     libvirtd = {
       enable = true;

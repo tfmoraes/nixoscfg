@@ -12,25 +12,25 @@ final: prev: {
   # buildInputs = oldAttrs.buildInputs ++ [ prev.pkgs.tree-sitter ];
   # });
 
-  neovim = prev.wrapNeovimUnstable prev.neovim-nightly {
+  # neovim = prev.wrapNeovimUnstable prev.neovim-nightly {
 
-    python3Env = final.python3.withPackages (ps: with ps; [
-      pynvim
-      black
-      isort
-      pylint
-    ]);
+  #   python3Env = final.python3.withPackages (ps: with ps; [
+  #     pynvim
+  #     black
+  #     isort
+  #     pylint
+  #   ]);
 
-    withPython2 = false;
-    withPython3 = true;
-    withNodeJs = true;
-    withRuby = true;
-    wrapRc = false;
-    manifestRc = ''
-      let g:python3_host_prog = "nvim-python3"
-    '';
+  #   withPython2 = false;
+  #   withPython3 = true;
+  #   withNodeJs = true;
+  #   withRuby = true;
+  #   wrapRc = false;
+  #   manifestRc = ''
+  #     let g:python3_host_prog = "nvim-python3"
+  #   '';
 
-  };
+  # };
 
   neovim-qt-unwrapped = prev.neovim-qt-unwrapped.overrideAttrs (old: {
     src = prev.fetchFromGitHub {

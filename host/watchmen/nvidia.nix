@@ -62,8 +62,8 @@
 
   environment.variables = {
     # "GBM_BACKENDS_PATH" = "/run/opengl-driver/lib/gbm";
-    "GBM_BACKEND" = "nvidia-drm";
-    "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
-    "OCL_ICD_VENDORS" = "/run/opengl-driver/etc/OpenCL/vendors";
+    # "GBM_BACKEND" = "nvidia-drm";
+    # "__GLX_VENDOR_LIBRARY_NAME" = "nvidia";
+    # "OCL_ICD_VENDORS" = "/run/opengl-driver/etc/OpenCL/vendors";
   };
 }

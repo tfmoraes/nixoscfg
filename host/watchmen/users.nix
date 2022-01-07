@@ -16,6 +16,8 @@ with pkgs; {
         group = "thiago";
         extraGroups = [ "wheel" "docker" "libvirtd" "lxd" ];
         shell = pkgs.fish;
+        # subUidRanges = [{ startUid = 100000; count = 65536; }];
+        # subGidRanges = [{ startGid = 100000; count = 65536; }];
       };
     };
   };
