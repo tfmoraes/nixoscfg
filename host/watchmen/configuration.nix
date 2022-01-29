@@ -24,10 +24,12 @@ with pkgs;
 
   nix = {
     package = pkgs.nixUnstable;
-    useSandbox = true;
-    trustedUsers = [ "root" "thiago" ];
+    settings = {
+      sandbox = true;
+      trusted-users = [ "root" "thiago" ];
+      auto-optimise-store = true;
+    };
     readOnlyStore = false;
-    autoOptimiseStore = true;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
@@ -302,10 +304,12 @@ with pkgs;
       alsa.support32Bit = true;
       pulse.enable = true;
       jack.enable = true;
-
-      # use the example session manager (no others are packaged yet)
-      # pwms.enable = true;
+      media-session.enable = false;
+      wireplumber.enable = true;
     };
+
+    # teamviewer.enable = true;
+
 
     locate = {
       enable = true;

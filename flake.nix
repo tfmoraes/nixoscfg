@@ -6,6 +6,8 @@
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
 
+    # jonringer_npkgs.url = "github:nixos/nixpkgs/master";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

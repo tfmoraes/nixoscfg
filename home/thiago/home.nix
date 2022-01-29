@@ -17,10 +17,11 @@
     ncdu
     niv
     byobu
+    tmux
 
     # gnome
     gnome.gnome-boxes
-    gnome.gnome-tweak-tool
+    gnome.gnome-tweaks
     transmission-gtk
 
     # neovim and language server
@@ -165,7 +166,7 @@
 
     firefox = {
       enable = true;
-      # package = pkgs.firefox-bin;
+      package = pkgs.firefox-bin;
     };
 
     chromium = {
@@ -198,7 +199,7 @@
 
     direnv = {
       enable = true;
-      enableFishIntegration = true;
+      # enableFishIntegration = true;
       nix-direnv = {
         enable = true;
         # enableFlakes = true;
@@ -304,8 +305,8 @@
     # LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.ocl-icd}/lib";
     EDITOR = "nvim";
     MOZ_ENABLE_WAYLAND = "1";
-    QT_QPA_PLATFORM = "wayland-egl";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
+    # QT_QPA_PLATFORM = "wayland-egl";
+    # QT_QPA_PLATFORMTHEME = "qt5ct";
     CLUTTER_BACKEND = "wayland";
     SDL_VIDEODRIVER = "wayland";
   };

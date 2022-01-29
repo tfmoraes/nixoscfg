@@ -1,5 +1,12 @@
 { config, pkgs, inputs, ... }:
-
+let
+  cpkgs = import inputs.jonringer_npkgs {
+    config = {
+      allowUnfree = true;
+    };
+    system = "x86_64-linux";
+  };
+in
 {
   services.xserver = {
     videoDrivers = [ "nvidia" ];
@@ -9,7 +16,8 @@
   };
   hardware = {
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      # package = cpkgs.linuxPackages_latest.nvidia_x11_beta;
       modesetting.enable = true;
       # nvidiaPersistenced = false;
     };
