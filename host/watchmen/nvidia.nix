@@ -16,13 +16,20 @@ in
   };
   hardware = {
     nvidia = {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
       # package = cpkgs.linuxPackages_latest.nvidia_x11_beta;
       modesetting.enable = true;
       # nvidiaPersistenced = false;
     };
     opengl = {
-      extraPackages = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+      extraPackages = with pkgs; [
+        libvdpau-va-gl
+        vaapiVdpau
+        # (pkgs.runCommand "nvidia-icd" { } ''
+        #   mkdir -p $out/share/vulkan/icd.d
+        #   cp ${pkgs.linuxPackages.nvidia_x11}/share/vulkan/icd.d/nvidia_icd.x86_64.json $out/share/vulkan/icd.d/nvidia_icd.json
+        # '')
+      ];
       extraPackages32 = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
     };
   };

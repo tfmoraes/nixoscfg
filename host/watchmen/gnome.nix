@@ -6,7 +6,7 @@ with pkgs; {
     xserver = {
       displayManager.gdm = {
         enable = true;
-        nvidiaWayland = true;
+        #nvidiaWayland = true;
       };
       desktopManager = {
         gnome = {

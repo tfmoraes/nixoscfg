@@ -25,7 +25,7 @@
     transmission-gtk
 
     # neovim and language server
-    black
+    # black
     clang-analyzer
     # cmake-language-server
     glow
@@ -89,7 +89,7 @@
 
     cudatoolkit
     cudnn
-    opencl-icd
+    ocl-icd
 
     (pkgs.python3.withPackages (ps:
       with ps; [

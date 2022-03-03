@@ -124,7 +124,7 @@ with pkgs;
       exfat
       file
       killall
-      flameGraph
+      flamegraph
       gnupg
       graphviz
       htop

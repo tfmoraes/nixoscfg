@@ -32,12 +32,12 @@ final: prev: {
 
   # };
 
-  neovim-qt-unwrapped = prev.neovim-qt-unwrapped.overrideAttrs (old: {
-    src = prev.fetchFromGitHub {
-      owner = "equalsraf";
-      repo = "neovim-qt";
-      rev = "85ade6728307645a22491d3673af06e82d2ee909";
-      sha256 = "sha256-EhYEPcqsJbW4Bc/zHhjcXIv504veQQ4HNXXa09pbnQ8=";
-    };
-  });
+  # neovim-qt-unwrapped = prev.neovim-qt-unwrapped.overrideAttrs (old: {
+  #   src = prev.fetchFromGitHub {
+  #     owner = "equalsraf";
+  #     repo = "neovim-qt";
+  #     rev = "85ade6728307645a22491d3673af06e82d2ee909";
+  #     sha256 = "sha256-EhYEPcqsJbW4Bc/zHhjcXIv504veQQ4HNXXa09pbnQ8=";
+  #   };
+  # });
 }
