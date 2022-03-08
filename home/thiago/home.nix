@@ -25,7 +25,6 @@
     transmission-gtk
 
     # neovim and language server
-    # black
     clang-analyzer
     # cmake-language-server
     glow
@@ -94,6 +93,7 @@
     (pkgs.python3.withPackages (ps:
       with ps; [
         beautifulsoup4
+        black
         click
         cython
         gdcm
@@ -124,7 +124,7 @@
         sympy
         TheanoWithCuda
         vtk_9
-        wxPython_4_0
+        wxPython_4_1
         yapf
       ]))
   ];
