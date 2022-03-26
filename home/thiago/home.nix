@@ -71,6 +71,7 @@
     babelfish
     binutils
     buildah
+    distrobox
     fdupes
     ffmpeg-full
     gitg
