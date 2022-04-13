@@ -13,6 +13,7 @@ with pkgs;
       ./fonts.nix
       ./dropbox.nix
       ./users.nix
+      ./pi.nix
       # ./nix-ld.nix
     ];
 

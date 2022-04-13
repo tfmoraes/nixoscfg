@@ -52,6 +52,7 @@
     vscode
     tree-sitter
 
+    adw-gtk3
     # chromium
     # gimp
     # inkscape
@@ -87,8 +88,8 @@
     wineWowPackages.fonts
     wineWowPackages.full
 
-    cudatoolkit
-    cudnn
+    cudaPackages_11.cudatoolkit
+    cudaPackages_11.cudnn
     ocl-icd
 
     (pkgs.python3.withPackages (ps:

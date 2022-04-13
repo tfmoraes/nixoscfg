@@ -34,6 +34,7 @@ with pkgs; {
   programs = {
     gnupg.agent.pinentryFlavor = "gnome3";
     xwayland.enable = true;
+    gnome-terminal.enable = true;
   };
 
   environment = {

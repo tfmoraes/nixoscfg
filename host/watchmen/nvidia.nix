@@ -22,15 +22,13 @@ in
       # nvidiaPersistenced = false;
     };
     opengl = {
-      # extraPackages = with pkgs; [
-      #   libvdpau-va-gl
-      #   vaapiVdpau
-      #   # (pkgs.runCommand "nvidia-icd" { } ''
-      #   #   mkdir -p $out/share/vulkan/icd.d
-      #   #   cp ${pkgs.linuxPackages.nvidia_x11}/share/vulkan/icd.d/nvidia_icd.x86_64.json $out/share/vulkan/icd.d/nvidia_icd.json
-      #   # '')
-      # ];
-      # extraPackages32 = with pkgs; [ libvdpau-va-gl vaapiVdpau ];
+      extraPackages = with pkgs; [
+        libvdpau-va-gl
+        nvidia-vaapi-driver
+      ];
+      extraPackages32 = with pkgs; [
+        libvdpau-va-gl
+      ];
     };
   };
   systemd.enableUnifiedCgroupHierarchy = false;

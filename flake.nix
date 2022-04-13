@@ -39,7 +39,7 @@
             nixpkgs.overlays = [
               # (import ./overlays/tracker.nix)
               # (import ./overlays/egl-wayland.nix)
-              # (import ./overlays/python.nix)
+              (import ./overlays/python.nix)
             ];
           }
           )
@@ -103,6 +103,7 @@
         (import ./overlays/python.nix)
         # (import ./overlays/tracker.nix)
         (import ./overlays/egl-wayland.nix)
+        (import ./overlays/adw-gtk3.nix)
         # (import ./overlays/system-config-printer.nix)
         # (import ./overlays/zettlr.nix)
         # (import ./overlays/gnome-boxes.nix)
