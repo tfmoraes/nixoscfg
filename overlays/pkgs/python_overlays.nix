@@ -21,10 +21,10 @@ in
     };
   });
 
-  pycurl = python-super.pycurl.overrideAttrs (oldAttrs: rec{
-    doCheck = false;
-    doInstallCheck = false;
-  });
+  # pycurl = python-super.pycurl.overrideAttrs (oldAttrs: rec{
+  #   doCheck = false;
+  #   doInstallCheck = false;
+  # });
 
   # remarshal = python-super.remarshal.overrideAttrs (oldAttrs: rec{
   #   postPatch = ''

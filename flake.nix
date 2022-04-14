@@ -39,7 +39,7 @@
             nixpkgs.overlays = [
               # (import ./overlays/tracker.nix)
               # (import ./overlays/egl-wayland.nix)
-              (import ./overlays/python.nix)
+              # (import ./overlays/python.nix)
             ];
           }
           )
