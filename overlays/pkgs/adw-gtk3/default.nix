@@ -9,13 +9,13 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "adw-gtk3";
-  version = "1.5";
+  version = "1.7";
 
   src = fetchFromGitHub {
     owner = "lassekongo83";
     repo = pname;
     rev = "v${version}";
-    sha256 = "sha256-HiNaf8Z0MdkRMNglrhTrKuF5RzkNP6tp2DWhCTZ/sQg=";
+    sha256 = "sha256-FHB1lYc1EFktuYTjFVWaZ5l4xkhkUeXGT6KwUjUNtn4=";
   };
 
   nativeBuildInputs = [
