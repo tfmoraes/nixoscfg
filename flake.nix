@@ -53,6 +53,7 @@
           nixpkgs = {
             config = {
               allowUnfree = true;
+              allowUnfreePredicate = (pkg: true);
             };
             overlays = self.overlays;
           };
@@ -62,7 +63,7 @@
           ];
         };
         homeDirectory = "/home/${username}/";
-        stateVersion = "21.11";
+        stateVersion = "22.05";
       };
     in
     flake-utils.lib.eachDefaultSystem
@@ -90,7 +91,7 @@
         watchmen = mkSystem "x86_64-linux" "watchmen";
       };
 
-      homeManagerConfigurations = {
+      homeConfigurations = {
         thiago = mkHomeManagerConfiguration "x86_64-linux" "thiago";
       };
 

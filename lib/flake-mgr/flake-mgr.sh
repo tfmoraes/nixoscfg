@@ -89,15 +89,15 @@ case "$action" in
     ${FLAKE_INPUTS[*]} "$@"
   ;;
   home-build)
-    exec_action $NIX_BUILD "$FLAKE#homeConfigurations.$SYSTEM.$HM_USER.activationPackage" "$@"
+    exec_action $NIX_BUILD "$FLAKE#homeConfigurations.$HM_USER.activationPackage" "$@"
   ;;
   home-switch)
-    exec_action $NIX_BUILD "$FLAKE#homeConfigurations.$SYSTEM.$HM_USER.activationPackage" "$@"
+    exec_action $NIX_BUILD "$FLAKE#homeConfigurations.$HM_USER.activationPackage" "$@"
     switch_if_needed "per-user/$HM_USER/home-manager" "result/activate"
   ;;
   boot|switch)
     exec_action $NIX_BUILD "$FLAKE#nixosConfigurations.$HOSTNAME.config.system.build.toplevel" "$@" && \
-    switch_if_needed "system" sudo nixos-rebuild "$action" --flake "$FLAKE" "$@"
+    switch_if_needed "system" nixos-rebuild "$action" "$FLAKE" --use-remote-sudo --flake "$@"
   ;;
   build|test|dry-activate)
     exec_action nixos-rebuild "$action" --flake "$FLAKE" "$@"
