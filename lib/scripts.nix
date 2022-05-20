@@ -122,7 +122,7 @@ case "''$action" in
   ;;
   boot|switch)
     exec_action ''$NIX_BUILD "''$FLAKE#nixosConfigurations.''$HOSTNAME.config.system.build.toplevel" "''$@" && \
-    switch_if_needed "system"nixos-rebuild --use-remote-sudo "''$action" --flake "''$FLAKE" "''$@"
+    switch_if_needed "system"nixos-rebuild "''$action" --flake "''$FLAKE" --use-remote-sudo "''$@"
   ;;
   build|test|dry-activate)
     exec_action nixos-rebuild "''$action" --flake "''$FLAKE" "''$@"

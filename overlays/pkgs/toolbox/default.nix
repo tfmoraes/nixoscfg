@@ -1,12 +1,12 @@
-{ lib
-, fetchFromGitHub
-, buildGoModule
-, go-md2man
-, installShellFiles
-, fetchpatch
-, glibc
+{
+  lib,
+  fetchFromGitHub,
+  buildGoModule,
+  go-md2man,
+  installShellFiles,
+  fetchpatch,
+  glibc,
 }:
-
 buildGoModule rec {
   pname = "toolbox";
   version = "0.0.99.2";
@@ -57,21 +57,21 @@ buildGoModule rec {
       --replace '"/etc/profile.d/toolbox.sh"}' '"${placeholder "out"}/share/profile.d/toolbox.sh"}'
   '';
 
-   postInstall = ''
-     cd ..
-     for d in doc/*.md; do
-       go-md2man -in $d -out ''${d%.md}
-     done
-     installManPage doc/*.[1-9]
-     installShellCompletion --bash completion/bash/toolbox
-     install profile.d/toolbox.sh -Dt $out/share/profile.d
- '';
+  postInstall = ''
+    cd ..
+    for d in doc/*.md; do
+      go-md2man -in $d -out ''${d%.md}
+    done
+    installManPage doc/*.[1-9]
+    installShellCompletion --bash completion/bash/toolbox
+    install profile.d/toolbox.sh -Dt $out/share/profile.d
+  '';
 
   meta = with lib; {
     description = "Unprivileged development environment";
     homepage = "https://github.com/containers/toolbox";
     license = licenses.asl20;
-    maintainers = with maintainers; [ mjlbach ];
+    maintainers = with maintainers; [mjlbach];
     platforms = platforms.linux;
   };
 }

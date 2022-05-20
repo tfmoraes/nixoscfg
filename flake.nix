@@ -28,32 +28,44 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, flake-utils, ... }:
-    let
-      mkSystem = system: hostname: nixpkgs.lib.nixosSystem {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    home-manager,
+    flake-utils,
+    ...
+  }: let
+    mkSystem = system: hostname:
+      nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [
           (./. + "/host/${hostname}/configuration.nix")
           inputs.nix-ld.nixosModules.nix-ld
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [
-              # (import ./overlays/tracker.nix)
-              # (import ./overlays/egl-wayland.nix)
-              # (import ./overlays/python.nix)
-            ];
-          }
+          (
+            {pkgs, ...}: {
+              nixpkgs.overlays = [
+                # (import ./overlays/tracker.nix)
+                # (import ./overlays/egl-wayland.nix)
+                # (import ./overlays/python.nix)
+              ];
+            }
           )
         ];
-        specialArgs = { inherit inputs; };
+        specialArgs = {inherit inputs;};
       };
 
-      mkHomeManagerConfiguration = system: username: home-manager.lib.homeManagerConfiguration {
+    mkHomeManagerConfiguration = system: username:
+      home-manager.lib.homeManagerConfiguration {
         inherit system username;
-        configuration = { pkgs, lib, ... }: {
+        configuration = {
+          pkgs,
+          lib,
+          ...
+        }: {
           nixpkgs = {
             config = {
               allowUnfree = true;
-              allowUnfreePredicate = (pkg: true);
+              allowUnfreePredicate = pkg: true;
             };
             overlays = self.overlays;
           };
@@ -65,28 +77,27 @@
         homeDirectory = "/home/${username}/";
         stateVersion = "22.05";
       };
-    in
+  in
     flake-utils.lib.eachDefaultSystem
-      (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-          scripts = import ./lib/scripts.nix { inherit pkgs; };
-        in
-        {
-          devShell = pkgs.mkShell {
-            name = "nixos-flakes";
-            nativeBuildInputs = [
-              pkgs.git
-              pkgs.jq
-              scripts.update-flake
-              scripts.home-switch
-              scripts.update-system
-              scripts.flake-mgr
-            ];
-          };
-        }
-      ) //
-    {
+    (
+      system: let
+        pkgs = nixpkgs.legacyPackages.${system};
+        scripts = import ./lib/scripts.nix {inherit pkgs;};
+      in {
+        devShell = pkgs.mkShell {
+          name = "nixos-flakes";
+          nativeBuildInputs = [
+            pkgs.git
+            pkgs.jq
+            scripts.update-flake
+            scripts.home-switch
+            scripts.update-system
+            scripts.flake-mgr
+          ];
+        };
+      }
+    )
+    // {
       nixosConfigurations = {
         watchmen = mkSystem "x86_64-linux" "watchmen";
       };

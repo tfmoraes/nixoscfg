@@ -24,7 +24,7 @@ with pkgs;
   };
 
   nix = {
-    package = pkgs.nixUnstable;
+    # package = pkgs.nixUnstable;
     settings = {
       sandbox = true;
       trusted-users = [ "root" "thiago" ];

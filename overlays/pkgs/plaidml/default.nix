@@ -1,5 +1,11 @@
-{ lib, pkgs, buildPythonPackage, fetchPypi, unzip, python }:
-
+{
+  lib,
+  pkgs,
+  buildPythonPackage,
+  fetchPypi,
+  unzip,
+  python,
+}:
 buildPythonPackage rec {
   pname = "plaidml";
   version = "0.7.0";
@@ -58,7 +64,6 @@ buildPythonPackage rec {
     export PLAIDML_NATIVE_PATH="$out/lib/libplaidml.so"
     export RUNFILES_DIR="$out/share/plaidml"
   '';
-
 
   meta = with lib; {
     homepage = https://github.com/plaidml/plaidml;

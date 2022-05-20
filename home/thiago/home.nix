@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -36,13 +38,16 @@
     neovim-remote
     ninja
     nixpkgs-fmt
+    alejandra
+    shfmt
+    cmake-format
     nodePackages.pyright
     nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
     sumneko-lua-language-server
     texlab
-    python-language-server
+    # python-language-server
     rnix-lsp
     rust-analyzer
     strace
@@ -98,6 +103,7 @@
         black
         click
         cython
+        djhtml
         gdcm
         imageio
         ipython
@@ -132,7 +138,6 @@
   ];
 
   services = {
-
     nextcloud-client = {
       enable = true;
     };
@@ -142,8 +147,7 @@
     # # path = "${config.home.homeDirectory}/Dropbox/";
     # };
 
-    gnome-keyring = { enable = true; };
-
+    gnome-keyring = {enable = true;};
   };
 
   # nixpkgs.overlays = [
@@ -160,7 +164,6 @@
   # '';
 
   programs = {
-
     starship = {
       enable = true;
       enableFishIntegration = true;
@@ -182,7 +185,7 @@
           --enable-zero-copy \
           --disable-gpu-driver-bug-workarounds \
           --enable-features=VaapiVideoDecoder
-          '';
+        '';
       };
     };
 
@@ -191,7 +194,7 @@
       interactiveShellInit = ''
         any-nix-shell fish --info-right | source
       '';
-      functions = { fish_greeting = ""; };
+      functions = {fish_greeting = "";};
     };
 
     fzf = {
@@ -242,7 +245,7 @@
       };
     };
 
-    jq = { enable = true; };
+    jq = {enable = true;};
 
     # neovim = {
     # enable = true;
@@ -281,7 +284,6 @@
         nix-shell (readlink $PWD/.gcroots/shell.drv) $argv[2..-1]
       end
     '';
-
 
     # "bin/command-not-found-handle".text = ''
     # #!/usr/bin/env bash

@@ -1,9 +1,6 @@
-python-self: python-super:
-let
-  pkgs = import <nixpkgs> { };
-in
-{
-
+python-self: python-super: let
+  pkgs = import <nixpkgs> {};
+in {
   # nibabel = python-super.nibabel.overrideAttrs (oldAttrs: {
   # doInstallCheck = false;
   # propagatedBuildInputs = oldAttrs.propagatedBuildInputs
@@ -54,7 +51,9 @@ in
   # ];
   # });
 
-  plaidml = python-self.callPackage ./plaidml { };
+  plaidml = python-self.callPackage ./plaidml {};
+
+  djhtml = python-self.callPackage ./djhtml {};
 
   # pypubsub = python-super.callPackage ./pubsub {
   # buildPythonPackage = python-super.buildPythonPackage;
