@@ -45,6 +45,7 @@
     nodePackages.vim-language-server
     nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
+    nodePackages.dockerfile-language-server-nodejs
     sumneko-lua-language-server
     texlab
     # python-language-server
@@ -108,6 +109,8 @@
         imageio
         ipython
         isort
+        jedi-language-server
+        python-lsp-server
         # Keras
         # keras-applications
         # keras-preprocessing
