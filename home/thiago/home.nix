@@ -93,6 +93,7 @@
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
+    lutris
 
     cudaPackages_11.cudatoolkit
     cudaPackages_11.cudnn

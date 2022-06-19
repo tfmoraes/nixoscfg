@@ -57,6 +57,7 @@
     mkHomeManagerConfiguration = system: username:
       home-manager.lib.homeManagerConfiguration {
         inherit system username;
+        pkgs = nixpkgs.legacyPackages.${system};
         configuration = {
           pkgs,
           lib,
