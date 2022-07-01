@@ -56,27 +56,22 @@
 
     mkHomeManagerConfiguration = system: username:
       home-manager.lib.homeManagerConfiguration {
-        inherit system username;
-        pkgs = nixpkgs.legacyPackages.${system};
-        configuration = {
-          pkgs,
-          lib,
-          ...
-        }: {
-          nixpkgs = {
-            config = {
-              allowUnfree = true;
-              allowUnfreePredicate = pkg: true;
+        pkgs = (import nixpkgs {
+          inherit system;
+          overlays = self.overlays;
+          config.allowUnfree = true;
+        }).pkgs;
+        modules = [
+          (./. + "/home/${username}/home.nix")
+          # ./overlays
+          {
+            home = {
+              inherit username;
+              homeDirectory = "/home/${username}/";
+              stateVersion = "22.05";
             };
-            overlays = self.overlays;
-          };
-          imports = [
-            (./. + "/home/${username}/home.nix")
-            # ./overlays
-          ];
-        };
-        homeDirectory = "/home/${username}/";
-        stateVersion = "22.05";
+          }
+        ];
       };
   in
     flake-utils.lib.eachDefaultSystem

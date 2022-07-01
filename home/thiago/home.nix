@@ -93,7 +93,13 @@
     vulkan-tools
     wineWowPackages.fonts
     wineWowPackages.full
-    lutris
+    (lutris.override
+    {
+      extraPkgs = pkgs:
+        with pkgs; [
+          xorg.libXtst
+        ];
+    })
 
     cudaPackages_11.cudatoolkit
     cudaPackages_11.cudnn
