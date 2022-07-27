@@ -275,8 +275,9 @@ with pkgs;
       enable = true;
     };
 
-    sshd = {
+    openssh = {
       enable = true;
+      forwardX11 = true;
     };
 
     xserver = {
