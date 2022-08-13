@@ -116,8 +116,8 @@
         imageio
         ipython
         isort
-        jedi-language-server
-        python-lsp-server
+        # jedi-language-server
+        # python-lsp-server
         # Keras
         # keras-applications
         # keras-preprocessing

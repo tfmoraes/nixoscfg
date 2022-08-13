@@ -13,7 +13,7 @@ with pkgs; {
       inconsolata
       noto-fonts
       noto-fonts-emoji
-      iosevka
+      # iosevka
       jetbrains-mono
       nerdfonts
       corefonts
