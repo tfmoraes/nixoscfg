@@ -1,15 +1,18 @@
-{ config, pkgs, inputs, ... }:
-let
+{
+  config,
+  pkgs,
+  inputs,
+  ...
+}: let
   cpkgs = import inputs.jonringer_npkgs {
     config = {
       allowUnfree = true;
     };
     system = "x86_64-linux";
   };
-in
-{
+in {
   services.xserver = {
-    videoDrivers = [ "nvidia" ];
+    videoDrivers = ["nvidia"];
     deviceSection = ''
       Option "Coolbits" "28"
     '';
