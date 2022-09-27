@@ -68,7 +68,7 @@
     pavucontrol
     # paraview
     thunderbird-bin
-    virtmanager
+    virt-manager
     vlc
     zettlr
     zotero
@@ -136,7 +136,7 @@
         pypubsub
         requests
         scikitimage
-        scikitlearn
+        scikit-learn
         scipy
         seaborn
         sympy

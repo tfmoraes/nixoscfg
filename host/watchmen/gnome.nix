@@ -48,6 +48,7 @@ with pkgs; {
     systemPackages = with pkgs; [
       qt5.qtwayland
       hicolor-icon-theme
+      gnomeExtensions.appindicator
     ];
   };
 }
