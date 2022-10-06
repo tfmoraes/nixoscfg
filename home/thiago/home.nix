@@ -35,7 +35,7 @@
     neovim
     neovim-qt
     neovide
-    neovim-remote
+    # neovim-remote
     ninja
     nixpkgs-fmt
     alejandra
@@ -142,7 +142,7 @@
         sympy
         TheanoWithCuda
         vtk_9
-        wxPython_4_1
+        # wxPython_4_1
         yapf
       ]))
   ];
