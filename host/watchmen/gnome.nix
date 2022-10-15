@@ -18,7 +18,7 @@ with pkgs; {
 
     gnome = {
       gnome-user-share.enable = true;
-      chrome-gnome-shell.enable = true;
+      gnome-browser-connector.enable = true;
       tracker.enable = true;
       tracker-miners.enable = true;
       # experimental-features.realtime-scheduling = true;
