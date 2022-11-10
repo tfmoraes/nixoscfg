@@ -35,6 +35,22 @@
     flake-utils,
     ...
   }: let
+    overlays = [
+      # inputs.neovim-nightly-overlay.overlay
+      (import ./overlays/neovim.nix)
+      (import ./overlays/sumneko.nix)
+      (import ./overlays/vimlsp.nix)
+      (import ./overlays/toolbox.nix)
+      (import ./overlays/python.nix)
+      # (import ./overlays/tracker.nix)
+      (import ./overlays/egl-wayland.nix)
+      (import ./overlays/adw-gtk3.nix)
+      (import ./overlays/bees.nix)
+      # (import ./overlays/system-config-printer.nix)
+      # (import ./overlays/zettlr.nix)
+      # (import ./overlays/gnome-boxes.nix)
+    ];
+
     mkSystem = system: hostname:
       nixpkgs.lib.nixosSystem {
         inherit system;
@@ -47,6 +63,7 @@
                 # (import ./overlays/tracker.nix)
                 # (import ./overlays/egl-wayland.nix)
                 # (import ./overlays/python.nix)
+                (import ./overlays/bees.nix)
               ];
             }
           )
@@ -56,11 +73,13 @@
 
     mkHomeManagerConfiguration = system: username:
       home-manager.lib.homeManagerConfiguration {
-        pkgs = (import nixpkgs {
-          inherit system;
-          overlays = self.overlays;
-          config.allowUnfree = true;
-        }).pkgs;
+        pkgs =
+          (import nixpkgs {
+            inherit system;
+            inherit overlays;
+            config.allowUnfree = true;
+          })
+          .pkgs;
         modules = [
           (./. + "/home/${username}/home.nix")
           # ./overlays
@@ -101,20 +120,5 @@
       homeConfigurations = {
         thiago = mkHomeManagerConfiguration "x86_64-linux" "thiago";
       };
-
-      overlays = [
-        # inputs.neovim-nightly-overlay.overlay
-        (import ./overlays/neovim.nix)
-        (import ./overlays/sumneko.nix)
-        (import ./overlays/vimlsp.nix)
-        (import ./overlays/toolbox.nix)
-        (import ./overlays/python.nix)
-        # (import ./overlays/tracker.nix)
-        (import ./overlays/egl-wayland.nix)
-        (import ./overlays/adw-gtk3.nix)
-        # (import ./overlays/system-config-printer.nix)
-        # (import ./overlays/zettlr.nix)
-        # (import ./overlays/gnome-boxes.nix)
-      ];
     };
 }
