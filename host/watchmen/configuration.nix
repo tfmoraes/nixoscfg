@@ -1,21 +1,23 @@
-{ config, pkgs, inputs, ... }:
-
-with pkgs;
 {
-  imports =
-    [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./nvidia.nix
-      ./sensors.nix
-      ./network.nix
-      ./gnome.nix
-      ./fonts.nix
-      ./dropbox.nix
-      ./users.nix
-      ./pi.nix
-      # ./nix-ld.nix
-    ];
+  config,
+  pkgs,
+  inputs,
+  ...
+}:
+with pkgs; {
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+    ./nvidia.nix
+    ./sensors.nix
+    ./network.nix
+    ./gnome.nix
+    ./fonts.nix
+    ./dropbox.nix
+    ./users.nix
+    ./pi.nix
+    # ./nix-ld.nix
+  ];
 
   nixpkgs = {
     config = {
@@ -27,7 +29,7 @@ with pkgs;
     # package = pkgs.nixUnstable;
     settings = {
       sandbox = true;
-      trusted-users = [ "root" "thiago" ];
+      trusted-users = ["root" "thiago"];
       auto-optimise-store = true;
     };
     readOnlyStore = false;
@@ -37,12 +39,13 @@ with pkgs;
       preallocate-contents = false
       experimental-features = nix-command flakes
     '';
-    nixPath = let path = toString ./.; in
-      [
-        "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
-        "home-manager=/etc/${config.environment.etc.home-manager.target}"
-        "nixos-config=${path}/configuration.nix"
-      ];
+    nixPath = let
+      path = toString ./.;
+    in [
+      "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
+      "home-manager=/etc/${config.environment.etc.home-manager.target}"
+      "nixos-config=${path}/configuration.nix"
+    ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
@@ -54,13 +57,12 @@ with pkgs;
       efi.canTouchEfiVariables = true;
       grub = {
         enable = false;
-        devices = [ "nodev" ];
+        devices = ["nodev"];
         efiSupport = true;
         useOSProber = true;
       };
     };
   };
-
 
   virtualisation = {
     docker = {
@@ -95,7 +97,6 @@ with pkgs;
       # ];
     };
   };
-
 
   # Select internationalisation properties.
   i18n.defaultLocale = "pt_BR.UTF-8";
@@ -172,7 +173,6 @@ with pkgs;
       home-manager.source = "${inputs.home-manager}";
       nixpkgs.source = "${inputs.nixpkgs}";
     };
-
   };
 
   programs = {
@@ -215,7 +215,6 @@ with pkgs;
   };
 
   hardware = {
-
     enableAllFirmware = true;
 
     enableRedistributableFirmware = true;
@@ -233,13 +232,17 @@ with pkgs;
       driSupport = true;
       driSupport32Bit = true;
       extraPackages32 = with pkgs.pkgsi686Linux;
-        [ libva ]
-        ++ lib.optionals config.services.pipewire.enable [ pipewire ];
+        [libva]
+        ++ lib.optionals config.services.pipewire.enable [pipewire];
     };
 
     sane = {
       enable = true;
-      extraBackends = with pkgs; [ hplipWithPlugin ];
+      extraBackends = with pkgs; [hplipWithPlugin];
+    };
+
+    bluetooth = {
+      enable = true;
     };
   };
 
@@ -250,10 +253,9 @@ with pkgs;
   };
 
   services = {
-
     printing = {
       enable = true;
-      drivers = with pkgs; [ gutenprint hplipWithPlugin ];
+      drivers = with pkgs; [gutenprint hplipWithPlugin];
     };
 
     avahi = {
@@ -312,13 +314,10 @@ with pkgs;
 
     # teamviewer.enable = true;
 
-
     locate = {
       enable = true;
     };
-
   };
-
 
   # 2020-12-25 Bug in systemd-resolved, workaround:
   # systemd.services.systemd-resolved.environment = with lib; {
