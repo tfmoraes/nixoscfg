@@ -34,7 +34,7 @@ in {
       ];
     };
   };
-  systemd.enableUnifiedCgroupHierarchy = false;
+  # systemd.enableUnifiedCgroupHierarchy = false;
 
   # environment.etc."egl/egl_external_platform.d/01_nvidia_wayland.json".text = ''
   #     {
