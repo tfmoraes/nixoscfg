@@ -1,4 +1,5 @@
 final: prev: {
+  # clisp = prev.clisp.override{readline = prev.readline6;};
   # egl-wayland = prev.egl-wayland.overrideAttrs (old: rec {
   #   pname = "egl-wayland";
   #   version = "1.1.9.999";

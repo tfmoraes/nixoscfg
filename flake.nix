@@ -56,7 +56,7 @@
         inherit system;
         modules = [
           (./. + "/host/${hostname}/configuration.nix")
-          inputs.nix-ld.nixosModules.nix-ld
+          # inputs.nix-ld.nixosModules.nix-ld
           (
             {pkgs, ...}: {
               nixpkgs.overlays = [
@@ -87,7 +87,7 @@
             home = {
               inherit username;
               homeDirectory = "/home/${username}/";
-              stateVersion = "22.05";
+              stateVersion = "23.05";
             };
           }
         ];

@@ -94,12 +94,12 @@
     wineWowPackages.fonts
     wineWowPackages.full
     (lutris.override
-    {
-      extraPkgs = pkgs:
-        with pkgs; [
-          xorg.libXtst
-        ];
-    })
+      {
+        extraPkgs = pkgs:
+          with pkgs; [
+            xorg.libXtst
+          ];
+      })
 
     cudaPackages_11.cudatoolkit
     cudaPackages_11.cudnn
@@ -148,16 +148,18 @@
   ];
 
   services = {
-    nextcloud-client = {
-      enable = true;
-    };
+    # nextcloud-client = {
+    #   enable = true;
+    # };
 
     # dropbox = {
     # enable = true;
     # # path = "${config.home.homeDirectory}/Dropbox/";
     # };
 
-    gnome-keyring = {enable = true;};
+    gnome-keyring = {
+      enable = true;
+    };
   };
 
   # nixpkgs.overlays = [
@@ -325,5 +327,5 @@
     SDL_VIDEODRIVER = "wayland";
   };
 
-  home.stateVersion = "22.05";
+  home.stateVersion = "23.05";
 }
