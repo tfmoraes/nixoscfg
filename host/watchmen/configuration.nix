@@ -32,7 +32,7 @@ with pkgs; {
       trusted-users = ["root" "thiago"];
       auto-optimise-store = true;
     };
-    readOnlyStore = false;
+    # readOnlyStore = false;
     extraOptions = ''
       keep-outputs = true
       keep-derivations = true
