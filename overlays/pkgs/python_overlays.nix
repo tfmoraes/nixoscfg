@@ -1,6 +1,4 @@
-python-self: python-super: let
-  pkgs = import <nixpkgs> {};
-in {
+python-self: python-super: {
   # nibabel = python-super.nibabel.overrideAttrs (oldAttrs: {
   # doInstallCheck = false;
   # propagatedBuildInputs = oldAttrs.propagatedBuildInputs
@@ -18,6 +16,24 @@ in {
     };
   });
 
+  fastparquet = python-super.fastparquet.overrideAttrs (oldAttrs: rec {
+    version = "2022.12.0";
+    src = python-super.pkgs.fetchFromGitHub {
+      owner = "dask";
+      repo = oldAttrs.pname;
+      rev = version;
+      hash = "sha256-/DSe2vZwrHHTuAXWJh9M1wCes5c4/QAVUnJVEI4Evyw=";
+    };
+
+    SETUPTOOLS_SCM_PRETEND_VERSION="${version}";
+
+    nativeBuildInputs = with python-super.pkgs; [
+      git
+      python-super.cython
+      python-super.setuptools-scm
+    ] ++ oldAttrs.nativeBuildInputs;
+  });
+
   # pycurl = python-super.pycurl.overrideAttrs (oldAttrs: rec{
   #   doCheck = false;
   #   doInstallCheck = false;
@@ -32,11 +48,18 @@ in {
   #   '';
   # });
 
-  # dask = python-super.dask.overrideAttrs (oldAttrs: rec {
-  # doCheck = false;
-  # doInstallCheck = false;
-  # checkInputs = [];
-  # });
+  dask = python-super.dask.overrideAttrs (oldAttrs: rec {
+    version = "2023.1.0";
+    src = python-super.pkgs.fetchFromGitHub {
+      owner = "dask";
+      repo = oldAttrs.pname;
+      rev = version;
+      hash = "sha256-avyrKBAPyYZBNgItnkNCferqb6+4yeGpBAZhSkL/fFA=";
+    };
+
+    patches = [];
+
+  });
 
   # fsspec = python-super.fsspec.overrideAttrs (oldAttrs: rec {
   # disabledTests = [
