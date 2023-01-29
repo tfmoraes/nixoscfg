@@ -16,23 +16,23 @@ python-self: python-super: {
     };
   });
 
-  fastparquet = python-super.fastparquet.overrideAttrs (oldAttrs: rec {
-    version = "2022.12.0";
-    src = python-super.pkgs.fetchFromGitHub {
-      owner = "dask";
-      repo = oldAttrs.pname;
-      rev = version;
-      hash = "sha256-/DSe2vZwrHHTuAXWJh9M1wCes5c4/QAVUnJVEI4Evyw=";
-    };
+  # fastparquet = python-super.fastparquet.overrideAttrs (oldAttrs: rec {
+  #   version = "2022.12.0";
+  #   src = python-super.pkgs.fetchFromGitHub {
+  #     owner = "dask";
+  #     repo = oldAttrs.pname;
+  #     rev = version;
+  #     hash = "sha256-/DSe2vZwrHHTuAXWJh9M1wCes5c4/QAVUnJVEI4Evyw=";
+  #   };
 
-    SETUPTOOLS_SCM_PRETEND_VERSION="${version}";
+  #   SETUPTOOLS_SCM_PRETEND_VERSION="${version}";
 
-    nativeBuildInputs = with python-super.pkgs; [
-      git
-      python-super.cython
-      python-super.setuptools-scm
-    ] ++ oldAttrs.nativeBuildInputs;
-  });
+  #   nativeBuildInputs = with python-super.pkgs; [
+  #     git
+  #     python-super.cython
+  #     python-super.setuptools-scm
+  #   ] ++ oldAttrs.nativeBuildInputs;
+  # });
 
   # pycurl = python-super.pycurl.overrideAttrs (oldAttrs: rec{
   #   doCheck = false;
@@ -48,18 +48,18 @@ python-self: python-super: {
   #   '';
   # });
 
-  dask = python-super.dask.overrideAttrs (oldAttrs: rec {
-    version = "2023.1.0";
-    src = python-super.pkgs.fetchFromGitHub {
-      owner = "dask";
-      repo = oldAttrs.pname;
-      rev = version;
-      hash = "sha256-avyrKBAPyYZBNgItnkNCferqb6+4yeGpBAZhSkL/fFA=";
-    };
+  # dask = python-super.dask.overrideAttrs (oldAttrs: rec {
+  #   version = "2023.1.0";
+  #   src = python-super.pkgs.fetchFromGitHub {
+  #     owner = "dask";
+  #     repo = oldAttrs.pname;
+  #     rev = version;
+  #     hash = "sha256-avyrKBAPyYZBNgItnkNCferqb6+4yeGpBAZhSkL/fFA=";
+  #   };
 
-    patches = [];
+  #   patches = [];
 
-  });
+  # });
 
   # fsspec = python-super.fsspec.overrideAttrs (oldAttrs: rec {
   # disabledTests = [
