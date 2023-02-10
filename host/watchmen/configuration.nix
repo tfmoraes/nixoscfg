@@ -279,7 +279,7 @@ with pkgs; {
 
     openssh = {
       enable = true;
-      forwardX11 = true;
+      settings.X11Forwarding = true;
     };
 
     xserver = {
