@@ -56,14 +56,14 @@
         inherit system;
         modules = [
           (./. + "/host/${hostname}/configuration.nix")
-          # inputs.nix-ld.nixosModules.nix-ld
+          inputs.nix-ld.nixosModules.nix-ld
           (
             {pkgs, ...}: {
               nixpkgs.overlays = [
                 # (import ./overlays/tracker.nix)
                 # (import ./overlays/egl-wayland.nix)
                 # (import ./overlays/python.nix)
-                (import ./overlays/bees.nix)
+                # (import ./overlays/bees.nix)
               ];
             }
           )

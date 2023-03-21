@@ -57,6 +57,7 @@
     # vimlsp
     vscode
     tree-sitter
+    poetry
 
     adw-gtk3
     # chromium
@@ -140,7 +141,7 @@
         scipy
         seaborn
         sympy
-        TheanoWithCuda
+        # TheanoWithCuda
         vtk_9
         # wxPython_4_1
         yapf
