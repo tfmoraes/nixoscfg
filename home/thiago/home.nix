@@ -58,6 +58,7 @@
     vscode
     tree-sitter
     poetry
+    helix
 
     adw-gtk3
     # chromium

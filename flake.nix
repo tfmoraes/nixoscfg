@@ -17,6 +17,11 @@
       url = "github:numtide/flake-utils";
     };
 
+    helix = {
+      url = "github:helix-editor/helix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # neovim-nightly-overlay = {
     #   url = "github:nix-community/neovim-nightly-overlay";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -49,6 +54,7 @@
       # (import ./overlays/system-config-printer.nix)
       # (import ./overlays/zettlr.nix)
       # (import ./overlays/gnome-boxes.nix)
+      (import ./overlays/helix.nix inputs)
     ];
 
     mkSystem = system: hostname:
