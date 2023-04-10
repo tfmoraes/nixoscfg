@@ -59,6 +59,7 @@
     tree-sitter
     poetry
     helix
+    typst
 
     adw-gtk3
     # chromium

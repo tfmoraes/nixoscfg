@@ -14,7 +14,7 @@ with pkgs; {
         isNormalUser = true;
         description = "Thiago Franco de Moraes";
         group = "thiago";
-        extraGroups = [ "wheel" "docker" "libvirtd" "lxd" ];
+        extraGroups = [ "wheel" "docker" "libvirtd" "lxd" "podman"];
         shell = pkgs.fish;
         # subUidRanges = [{ startUid = 100000; count = 65536; }];
         # subGidRanges = [{ startGid = 100000; count = 65536; }];
