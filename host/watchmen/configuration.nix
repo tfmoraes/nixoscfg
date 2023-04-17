@@ -50,8 +50,8 @@ with pkgs; {
   };
 
   boot = {
-    tmpOnTmpfs = true;
     kernelPackages = pkgs.linuxPackages_latest;
+    tmp.useTmpfs = true;
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
