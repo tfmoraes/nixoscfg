@@ -7,21 +7,22 @@ with pkgs; {
     };
     enableDefaultFonts = true;
     fonts = with pkgs; [
-      hack-font
+      corefonts
       fira-code
-      ubuntu_font_family
+      hack-font
       inconsolata
-      noto-fonts
-      noto-fonts-emoji
+      inter
       iosevka
       jetbrains-mono
-      nerdfonts
-      corefonts
-      liberation_ttf
-      source-code-pro
       jetbrains-mono
+      liberation_ttf
+      libertine
       montserrat
-      inter
+      nerdfonts
+      noto-fonts
+      noto-fonts-emoji
+      source-code-pro
+      ubuntu_font_family
     ];
   };
 }
