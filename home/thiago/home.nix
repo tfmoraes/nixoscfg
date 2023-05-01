@@ -151,9 +151,9 @@
   ];
 
   services = {
-    # nextcloud-client = {
-    #   enable = true;
-    # };
+    nextcloud-client = {
+      enable = true;
+    };
 
     # dropbox = {
     # enable = true;
