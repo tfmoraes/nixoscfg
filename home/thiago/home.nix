@@ -72,6 +72,8 @@
     # paraview
     thunderbird-bin
     virt-manager
+    virtiofsd
+
     vlc
     zettlr
     zotero
