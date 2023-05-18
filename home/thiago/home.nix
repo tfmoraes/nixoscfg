@@ -74,6 +74,8 @@
     virt-manager
     virtiofsd
 
+    vagrant
+
     vlc
     zettlr
     zotero

@@ -80,12 +80,12 @@ with pkgs; {
     };
     libvirtd = {
       enable = true;
-      extraConfig = ''
-        memory_backing_dir = "/dev/shm/"
-      '';
-      qemu.verbatimConfig = ''
-        memory_backing_dir = "/dev/shm/"
-      '';
+      # extraConfig = ''
+      #   memory_backing_dir = "/dev/shm/"
+      # '';
+      # qemu.verbatimConfig = ''
+      #   memory_backing_dir = "/dev/shm/"
+      # '';
     };
     # lxd = {
     # enable = true;
