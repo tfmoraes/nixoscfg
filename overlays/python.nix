@@ -18,4 +18,14 @@ self: super: {
     packageOverrides = import ./pkgs/python_overlays.nix;
     self = super.python39;
   };
+
+  python310 = super.python310.override {
+    packageOverrides = import ./pkgs/python_overlays.nix;
+    self = super.python310;
+  };
+
+  python311 = super.python311.override {
+    packageOverrides = import ./pkgs/python_overlays.nix;
+    self = super.python311;
+  };
 }

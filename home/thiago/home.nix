@@ -46,7 +46,7 @@
     nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
     nodePackages.dockerfile-language-server-nodejs
-    sumneko-lua-language-server
+    lua-language-server
     texlab
     # python-language-server
     rnix-lsp
@@ -60,6 +60,7 @@
     poetry
     helix
     typst
+    stylua
 
     adw-gtk3
     # chromium

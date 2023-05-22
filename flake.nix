@@ -43,13 +43,13 @@
     overlays = [
       # inputs.neovim-nightly-overlay.overlay
       (import ./overlays/neovim.nix)
-      (import ./overlays/sumneko.nix)
-      (import ./overlays/vimlsp.nix)
+      # (import ./overlays/sumneko.nix)
+      # (import ./overlays/vimlsp.nix)
       # (import ./overlays/toolbox.nix)
       (import ./overlays/python.nix)
       # (import ./overlays/tracker.nix)
-      (import ./overlays/egl-wayland.nix)
-      (import ./overlays/adw-gtk3.nix)
+      # (import ./overlays/egl-wayland.nix)
+      # (import ./overlays/adw-gtk3.nix)
       # (import ./overlays/bees.nix)
       # (import ./overlays/system-config-printer.nix)
       # (import ./overlays/zettlr.nix)
