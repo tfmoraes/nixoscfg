@@ -25,12 +25,12 @@
     gnome.gnome-boxes
     gnome.gnome-tweaks
     transmission-gtk
+    blackbox-terminal
 
     # neovim and language server
     clang-analyzer
     # cmake-language-server
     glow
-    gopls
     ltrace
     neovim
     neovim-qt
@@ -41,16 +41,8 @@
     alejandra
     shfmt
     cmake-format
-    nodePackages.pyright
-    nodePackages.vim-language-server
-    nodePackages.vscode-html-languageserver-bin
     nodePackages.prettier
-    nodePackages.dockerfile-language-server-nodejs
-    lua-language-server
-    texlab
     # python-language-server
-    rnix-lsp
-    rust-analyzer
     strace
     # sumneko
     universal-ctags
@@ -61,6 +53,21 @@
     helix
     typst
     stylua
+    ruff
+
+    # LSP
+    ansible-language-server
+    cmake-language-server
+    gopls
+    lua-language-server
+    marksman
+    nodePackages.dockerfile-language-server-nodejs
+    nodePackages.pyright
+    nodePackages.vim-language-server
+    nodePackages.vscode-html-languageserver-bin
+    rnix-lsp
+    rust-analyzer
+    texlab
 
     adw-gtk3
     # chromium
@@ -143,6 +150,7 @@
         pygobject3
         pypubsub
         requests
+        ruff-lsp
         scikitimage
         scikit-learn
         scipy
