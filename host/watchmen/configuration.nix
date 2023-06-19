@@ -318,6 +318,10 @@ with pkgs; {
       wireplumber.enable = true;
     };
 
+    logind.extraConfig = ''
+      RuntimeDirectorySize=16G
+    '';
+
     # teamviewer.enable = true;
 
     locate = {
