@@ -326,6 +326,7 @@ with pkgs; {
 
     locate = {
       enable = true;
+      interval = "daily";
     };
   };
 
