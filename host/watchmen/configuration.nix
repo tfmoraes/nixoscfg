@@ -1,8 +1,7 @@
-{
-  config,
-  pkgs,
-  inputs,
-  ...
+{ config
+, pkgs
+, inputs
+, ...
 }:
 with pkgs; {
   imports = [
@@ -29,7 +28,7 @@ with pkgs; {
     package = pkgs.nixUnstable;
     settings = {
       sandbox = true;
-      trusted-users = ["root" "thiago"];
+      trusted-users = [ "root" "thiago" ];
       auto-optimise-store = true;
     };
     # readOnlyStore = false;
@@ -39,13 +38,15 @@ with pkgs; {
       preallocate-contents = false
       experimental-features = nix-command flakes
     '';
-    nixPath = let
-      path = toString ./.;
-    in [
-      "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
-      "home-manager=/etc/${config.environment.etc.home-manager.target}"
-      "nixos-config=${path}/configuration.nix"
-    ];
+    nixPath =
+      let
+        path = toString ./.;
+      in
+      [
+        "nixpkgs=/etc/${config.environment.etc.nixpkgs.target}"
+        "home-manager=/etc/${config.environment.etc.home-manager.target}"
+        "nixos-config=${path}/configuration.nix"
+      ];
     registry.nixpkgs.flake = inputs.nixpkgs;
   };
 
@@ -57,7 +58,7 @@ with pkgs; {
       efi.canTouchEfiVariables = true;
       grub = {
         enable = false;
-        devices = ["nodev"];
+        devices = [ "nodev" ];
         efiSupport = true;
         useOSProber = true;
       };
@@ -238,13 +239,13 @@ with pkgs; {
       driSupport = true;
       driSupport32Bit = true;
       extraPackages32 = with pkgs.pkgsi686Linux;
-        [libva]
-        ++ lib.optionals config.services.pipewire.enable [pipewire];
+        [ libva ]
+        ++ lib.optionals config.services.pipewire.enable [ pipewire ];
     };
 
     sane = {
       enable = true;
-      extraBackends = with pkgs; [hplipWithPlugin];
+      extraBackends = with pkgs; [ hplipWithPlugin ];
     };
 
     bluetooth = {
@@ -261,7 +262,7 @@ with pkgs; {
   services = {
     printing = {
       enable = true;
-      drivers = with pkgs; [gutenprint hplipWithPlugin];
+      drivers = with pkgs; [ gutenprint hplipWithPlugin ];
     };
 
     avahi = {
@@ -326,7 +327,7 @@ with pkgs; {
 
     locate = {
       enable = true;
-      interval = "daily";
+      interval = "10:00";
     };
   };
 
