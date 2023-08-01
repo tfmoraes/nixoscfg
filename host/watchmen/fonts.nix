@@ -5,8 +5,8 @@ with pkgs; {
     fontDir = {
       enable = true;
     };
-    enableDefaultFonts = true;
-    fonts = with pkgs; [
+    enableDefaultPackages = true;
+    packages = with pkgs; [
       corefonts
       fira-code
       hack-font

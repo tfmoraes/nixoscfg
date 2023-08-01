@@ -14,7 +14,7 @@ with pkgs;
 
   home-switch = writeShellScriptBin "home-switch" ''
   echo "$FLAKE#homeConfigurations.$SYSTEM.$HM_USER.activationPackage"
-  nix build --no-update-lock-file ".#homeManagerConfigurations.thiago.activationPackage"
+  nix build --no-update-lock-file ".#homeConfigurations.thiago.activationPackage"
   ./result/activate
   rm result
   '';
@@ -113,11 +113,11 @@ case "''$action" in
   ;;
   home-build)
   echo "''$FLAKE#homeManagerConfigurations.''$SYSTEM.''$HM_USER.activationPackage"
-    exec_action ''$NIX_BUILD --impure "''$FLAKE#homeManagerConfigurations.''$HM_USER.activationPackage" "''$@"
+    exec_action ''$NIX_BUILD --impure "''$FLAKE#homeConfigurations.''$HM_USER.activationPackage" "''$@"
   ;;
   home-switch)
   echo "''$FLAKE#homeConfigurations.''$SYSTEM.''$HM_USER.activationPackage"
-    exec_action ''$NIX_BUILD --impure "''$FLAKE#homeManagerConfigurations.''$HM_USER.activationPackage" "''$@"
+    exec_action ''$NIX_BUILD --impure "''$FLAKE#homeConfigurations.''$HM_USER.activationPackage" "''$@"
     switch_if_needed "per-user/''$HM_USER/home-manager" "result/activate"
   ;;
   boot|switch)
