@@ -327,7 +327,7 @@ with pkgs; {
 
     locate = {
       enable = true;
-      interval = "10:00";
+      interval = "11:00";
     };
   };
 
