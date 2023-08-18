@@ -160,6 +160,7 @@ with pkgs; {
       qt5ct
 
       docker-compose
+      podman-compose
 
       gcc
       clang
