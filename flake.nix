@@ -19,7 +19,7 @@
 
     helix = {
       url = "github:helix-editor/helix";
-      # inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     # neovim-nightly-overlay = {
@@ -93,7 +93,7 @@
             }).pkgs;
           modules = [
             (./. + "/home/${username}/home.nix")
-            inputs.nix-index-database.hmModules.nix-index
+            # inputs.nix-index-database.hmModules.nix-index
             # ./overlays
             {
               home = {
