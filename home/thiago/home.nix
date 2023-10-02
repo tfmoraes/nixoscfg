@@ -29,7 +29,6 @@
 
     # neovim and language server
     clang-analyzer
-    # cmake-language-server
     glow
     ltrace
     neovim
@@ -57,7 +56,7 @@
 
     # LSP
     ansible-language-server
-    cmake-language-server
+    # cmake-language-server
     gopls
     lua-language-server
     marksman
