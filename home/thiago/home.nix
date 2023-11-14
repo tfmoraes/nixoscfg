@@ -67,6 +67,8 @@
     rnix-lsp
     rust-analyzer
     texlab
+    nil
+    taplo
 
     adw-gtk3
     # chromium
