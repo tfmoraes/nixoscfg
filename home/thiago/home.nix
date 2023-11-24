@@ -344,5 +344,5 @@
     SDL_VIDEODRIVER = "wayland";
   };
 
-  home.stateVersion = "23.05";
+  home.stateVersion = "23.11";
 }

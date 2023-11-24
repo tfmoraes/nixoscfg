@@ -99,7 +99,7 @@
               home = {
                 inherit username;
                 homeDirectory = "/home/${username}/";
-                stateVersion = "23.05";
+                stateVersion = "23.11";
               };
             }
           ];
