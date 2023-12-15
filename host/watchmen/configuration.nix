@@ -100,9 +100,9 @@ with pkgs; {
     portal = {
       enable = true;
       # extraPortals = with pkgs; [
-        # xdg-desktop-portal-kde
-        # xdg-desktop-portal-wlr
-        # xdg-desktop-portal-gtk
+      # xdg-desktop-portal-kde
+      # xdg-desktop-portal-wlr
+      # xdg-desktop-portal-gtk
       # ];
     };
   };
@@ -278,6 +278,8 @@ with pkgs; {
         userServices = true;
       };
     };
+
+    dbus.implementation = "broker";
 
     resolved = {
       enable = true;
