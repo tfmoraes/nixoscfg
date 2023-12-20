@@ -272,7 +272,7 @@ with pkgs; {
       enable = true;
       hostName = config.networking.hostName;
       ipv4 = true;
-      nssmdns = true;
+      nssmdns4 = true;
       publish = {
         enable = true;
         userServices = true;
